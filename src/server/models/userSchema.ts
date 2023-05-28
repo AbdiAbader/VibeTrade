@@ -23,7 +23,12 @@ const userDocumentSchema = new mongoose.Schema({
     updatedAt: {
         type: Date,
         default: Date.now
+    },
+    shippingAddress: {
+        type: String,
+        default: ""
     }
+
 });
 // Apply the uniqueValidator plugin to userSchema.
 userDocumentSchema.plugin(uniqueValidator);
