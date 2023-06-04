@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import userSchema from '../models/userSchema';
+import userSchema from '../models/user.schema';
 
 export const createUser = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -15,17 +15,8 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
-export const getUserById = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const user = await userSchema.findById(req.params.id);
-    res.status(200).json({
-      status: "Success",
-      data: user
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "Failed",
-      message: err
-    });
-  }
-};
+export const updateUser = async (req: Request, res: Response): Promise<void> => {
+
+}
+  
+
