@@ -1,0 +1,210 @@
+.top{
+  height: 50px;
+  border-bottom: 1.5px solid #b09913;
+  
+}
+.top h3 {
+
+    font-weight: lighter;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1em;
+    color: #d6b316;
+    height: 70px;
+    margin-left: 40%;
+    padding-top: 10px;
+}
+.header {
+  height: 110px;
+  background-color: #fff;
+  border-bottom: 1px solid #ebebeb;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  
+}
+.header_1 {
+  margin-left: 2em;
+}
+.header_2{
+  margin-right: 2em;
+  
+}
+.header_2 a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2em;
+  font-weight: 200;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: black;
+  margin-right: 1em;
+  &:hover {
+    color: rgb(156, 84, 84);
+  }
+  &:active {
+    color: rgb(156, 84, 84);
+  }
+}
+
+
+.constrain{
+  max-width: 130px;
+  padding: 60px;
+  margin: 0 auto;
+  position: relative;
+  
+}
+
+
+
+.input-bottom-border{
+font-size: 16px;
+line-height: 1.5;
+border: none;
+background-color: white;
+background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'><path fill='%238C92A0' d='M11.44 10.73l4.41 4.42a.5.5 0 1 1-.7.7l-4.42-4.41a6.5 6.5 0 1 1 .7-.7v-.01zM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z'></path></svg>");
+background-repeat: no-repeat;
+background-position: 10px 10px;
+background-size: 20px 20px;
+
+width: 150px;
+padding: .5em 1em .5em 2.5em;
+} 
+
+.input-bottom-border::placeholder{
+  color: #cfa715;
+}
+
+.input-bottom-border:focus, .input-bottom-border:active, .input-bottom-border:hover{
+  outline: none;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid #6c531d;
+}
+
+.constrain li {
+  display: inline-block;
+  margin-right: 2em;
+ padding-top: 6px;
+  text-decoration: none;
+  width: 100%;
+  font-size: 1.2em;
+  font-weight: 200;
+  font-family: 'Courier New', Courier, monospace;
+  color: black;
+  background-color: #fff;
+  cursor: pointer;
+ 
+  
+  &:hover {
+    color: rgb(166, 135, 11);
+
+
+    
+
+  }
+ 
+}
+.constrain ul {
+
+  position: absolute;
+  align-items: center;
+  width: 165px;
+  height: 30px;
+
+  margin-top: 0.2em;
+    border: 1px solid #6c531d;
+  
+ 
+ 
+ }
+ .header_3 {
+   display: flex;
+  margin-left: 3em;
+ }
+ .header_3 a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2em;
+  font-weight: 200;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: black;
+  margin-right: 1em;
+  &:hover {
+    color: rgb(156, 84, 84);
+  }
+  &:active {
+    color: rgb(156, 84, 84);
+  }
+ }
+ .cart-counter {
+  background-color: #d3991b;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 6px;
+  border-radius: 50%;
+
+
+
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+ 
+}
+
+/* Styles for the dropdown button */
+.dropdown button {
+  background-color: white; /* Green background color */
+  color:black;/* Text color */
+  padding: 10px; /* Spacing */
+  font-size: 16px; /* Text size */
+  border: none; /* Remove borders */
+  cursor: pointer; /* Add cursor on hover */
+  margin-right: 10px;
+  
+}
+
+/* Styles for the dropdown content */
+.dropdown-content {
+  display: none; /* Hide by default */
+  position: absolute; /* Position dropdown below button */
+  background-color: #f9f9f9; /* Light grey background color */
+  min-width: 160px; /* Set minimum width */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add shadow */
+  z-index: 1; /* Ensure dropdown is on top */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Styles for the dropdown items */
+.dropdown-content a {
+  color: black; /* Text color */
+  padding: 12px 16px; /* Spacing */
+  text-decoration: none; /* Remove underline */
+  display: block; /* Display items as block */
+}
+
+/* Change background color on hover */
+.dropdown-content a:hover {
+  background-color: #e5e5e5;
+}
+
+/* Show dropdown content when button is hovered or clicked */
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+.header_3 img{
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    width: 45px;
+    height: 45px;
+  }
+  padding-bottom: 5px;
+}

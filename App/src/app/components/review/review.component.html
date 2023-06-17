@@ -1,0 +1,79 @@
+
+  <div class="review_header">
+    <div class="review_container" *ngFor="let pro of pordutinfo">
+      <img src="{{ pro.image }}" class="logo">
+      {{ pro.name }}
+      <div class="rate_counter">
+        <div class="counter">
+          <span class="counter_number">4</span>
+          <span class="counter_text">out of 5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="review-container">
+    <div class="review-header">
+      <h2>Customer Reviews</h2>
+      <button class="add-review-button" (click)="addreview()">Add Review</button>
+    </div>
+    <div class="review-list" *ngFor="let item of reivew">
+      <div class="review-item">
+        <div class="review-info">
+          <div class="review-rating">
+            <div class="rating">
+             
+                <span class="star" [style.color]="item.rating >= 1 ? '#f0ca4d' : 'black'">&#9733;</span>
+                <span class="star" [style.color]="item.rating >= 2 ? '#f0ca4d' : 'black'">&#9733;</span>
+                <span class="star" [style.color]="item.rating >= 3 ? '#f0ca4d' : 'black'">&#9733;</span>
+                <span class="star" [style.color]="item.rating >= 4 ? '#f0ca4d' : 'black'">&#9733;</span>
+                <span class="star" [style.color]="item.rating >= 5 ? '#f0ca4d' : 'black'">&#9733;</span>
+             
+              
+            </div>
+          </div>
+        
+          <p class="review-description">
+            {{ item.content }}
+          </p>
+          <span class="review-author">Author: {{ item.user.name }}</span>
+        </div>
+        <div class="review-actions">
+          <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="updateLike(item)">
+            <mat-icon>favorite</mat-icon>
+          </button> ({{ item.likes.length }})
+         <img src="https://img.icons8.com/?size=1x&id=77574&format=png" (click)="updateDislike(item)"> ({{ item.dislikes.length }})
+         
+         <div class="reply-section"  *ngIf="item.showReplyForm">
+          <textarea class="reply-input" [(ngModel)]="replyContent" name="replay"  placeholder="Enter your reply"></textarea>
+          <button class="reply-button" (click)="submitreply(item)">Submit</button>
+        </div>
+       
+           <img src="https://img.icons8.com/?size=1x&id=904&format=png" (click)="toggleReplyForm(item)">
+        </div>
+        <div class="see_replies" *ngIf="item.showReplies">
+        <div class="reply-list" *ngFor="let reply of item.replies">
+          <div class="reply-item">
+            <div class="reply-info">
+              <span class="reply-author">Name: {{ reply.user.name }}</span>
+              
+            </div>
+            <p class="reply-content">{{ reply.content }}</p>
+            <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="updateLike(item)">
+              <mat-icon>favorite</mat-icon>
+            </button> ({{ reply.likes.length }})
+           <img src="https://img.icons8.com/?size=1x&id=77574&format=png" (click)="updateDislike(item)"> ({{ reply.dislikes.length }})
+           
+          </div>
+       
+    
+      </div>
+    </div>
+    <label class="reply-counter" (click)="toggleReplies(item)">see replies({{item.replies.length}})</label>
+     
+      </div>
+      </div>
+    </div>
+ 
+
+

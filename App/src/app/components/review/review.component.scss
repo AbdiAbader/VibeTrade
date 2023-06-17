@@ -1,0 +1,169 @@
+.review-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+ height: auto;
+
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-review-button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.review-list {
+  margin-top: 20px;
+}
+
+.review-item {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.review-info {
+  margin-bottom: 10px;
+}
+
+.review-rating {
+  color: #f0ca4d;
+  font-size: 20px;
+}
+
+.star {
+  margin-right: 2px;
+}
+
+.review-title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.review-description {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.review-author {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.rating {
+  font-size: 24px;
+  color: #f0ca4d;
+}
+
+.star {
+  cursor: pointer;
+}
+
+.selected {
+  color: #f0ca4d;
+}
+
+.review_header {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.review_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 20px;
+  margin-top: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100px; 
+  height: 100%;
+}
+
+img {
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.rate_counter {
+  display: flex;
+  align-items: center;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  color: #ff9900;
+}
+
+.counter_number {
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.counter_text {
+  font-size: 14px;
+}
+.review-actions img{
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.reply-item img{
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.reply-list {
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-top: 10px;
+  
+  .reply-item {
+    // Styling for reply item
+    margin-bottom: 10px;
+    
+    .reply-info {
+      // Styling for reply info
+      margin-bottom: 5px;
+      
+      .reply-author {
+        // Styling for reply author
+        font-weight: lighter;
+        font-size: 16px;
+        font-style: italic;
+        
+        
+      }
+    }
+    
+    .reply-content {
+      // Styling for reply content
+      font-size: 14px;
+    }
+    
+ 
+    
+  
+  }
+}

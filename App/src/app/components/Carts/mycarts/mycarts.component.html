@@ -1,0 +1,50 @@
+ <div class="mycart">
+   
+    
+    <div class="wrapper">
+      <h1>My cart</h1>
+        <hr>
+        <div class="product-card" *ngFor="let item of cart">
+            <div class="product-card_list">
+         <div class="section1">
+            
+            <img src="{{item.product.image}}" alt="{{item.product.name}}">
+         </div>
+         <div class="section2">
+            <h3>{{item.product.name}}</h3>
+            <p>Price: {{item.product.price}}</p>
+
+            <select matNativeControl [(ngModel)]="item.selectedvalue" name="quantity" (ngModelChange)="onQuantityChange(item.product, $event)">
+                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}</option>
+              </select>
+
+                 
+         </div>
+
+         <div class="section3">
+            <mat-icon class="icon" (click)="removefromcart(item.product, item.selectedvalue)">remove_shopping_cart</mat-icon>
+         </div>
+
+      
+     
+
+        </div>
+        <hr>
+    </div>
+    
+          </div>
+          <div class="order_summary">
+            <h1>Order Summary</h1>
+            <hr>
+            <h2>SubTotal: {{total()}}</h2>
+            <h4>Payment Method</h4>
+            <input type="radio" [(ngModel)]="payment" name="payment" value="cash on delivery" checked>Cash on Delivery
+            <input type="radio" [(ngModel)]="payment" name="payment" value="credit card">Credit Card<br>
+            
+            <hr>
+            <h2>Total: {{total()}}</h2> 
+            <button (click)="checkout()" >Checkout</button>
+            
+         </div>
+</div>
+

@@ -1,0 +1,13 @@
+<div class="wishlist-container">
+    <ul class="wishlist-items">
+      <li *ngFor="let item of wishlistItems">
+        <img src="{{item.image}}">
+        <div class="item-details">
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description }}</p>
+          <button (click)="removeFromWishlist(item._id)">Remove</button>
+        </div>
+      </li>
+    </ul>
+    
+  </div>

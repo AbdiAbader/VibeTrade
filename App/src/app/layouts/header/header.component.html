@@ -1,0 +1,72 @@
+<div class="top">
+	<h3>Vibetrade online Shopping site</h3>
+</div>
+<div class="header">
+	
+	  
+
+	<div class="header_1">
+	
+	<div class="search-box">
+
+	
+		<div class="constrain">
+
+
+
+			<input [(ngModel)]="search" (ngModelChange)="searchproduct($event)"  class="input-bottom-border" type="text" placeholder="Search...">
+		
+<ul *ngFor="let product of searched">
+  <li  (click)="searchedpro(product)">{{ product.name}}</li>
+</ul>
+
+			
+</div>
+			  
+			
+
+	 
+	</div>
+	</div>
+	<div class="header_2">
+	   
+	  <a routerLink="" routerLinkActive="active">Home</a>
+	  <a routerLink="/shopall" routerLinkActive="active">Shop</a>
+	  <a routerLink="/aboutus" routerLinkActive="active">About</a>
+	  <a routerLink="/contactus" routerLinkActive="active">Contact</a>
+
+	  
+	  
+
+	
+	  
+	
+	</div>
+	<div class="header_3">
+		
+		<div class="dropdown" *ngIf="isloggedin()">
+			<button>{{name}}</button>
+			<div class="dropdown-content">
+			  <a routerLink="/myaccount" routerLinkActive="active">Profile</a>
+			  <a (click)="logout()">Logout</a>
+			 
+			</div>
+		  
+		  </div>
+			
+
+		
+		<a *ngIf="!isloggedin()" routerLink="/register" routerLinkActive="active">
+			Login
+		</a>
+		
+		<a routerLink="/cart" routerLinkActive="active">🛒Cart
+			<span *ngIf="counter() > 0" class="cart-counter">{{ counter() }}</span>
+		</a>
+
+	  <img src="https://img.icons8.com/?size=1x&id=110472&format=png" *ngIf="isloggedin()" (click)="notify()" >{{ notification_counter() }}
+		
+	</div>
+	
+</div>
+  

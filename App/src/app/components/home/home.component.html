@@ -1,0 +1,79 @@
+
+
+
+<div class="bestprice">
+<div class="circle">
+    <div class="circle_write">
+      <div class="container">
+
+      
+      <label>Best Price</label>
+    <h1> 
+      Incredible Prices </h1>
+      <h1>
+
+      All Your</h1><h1>Favorite Items</h1>
+      
+      <h3>more for less on selected brands </h3>
+    <button mat-fab extended color="primary" >
+      
+      Shop Now
+    </button>
+      </div>
+    </div>
+</div>
+
+</div>
+
+
+
+<div class="bestsellers">
+  <h1>Shop Now</h1>
+  <div class="wrapper" >
+    <mat-card  *ngFor="let product of productlist.slice(0,6)" class="product-card">
+      <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+      </mat-card-header>
+      <a routerLink="/single"><img  src="{{product.image}}" alt="{{product.name}}"></a>
+      <mat-card-content>
+
+        <p>Price: {{ product.price }}</p>
+        <p>    {{ product.description.length > 20 ? product.description.substring(0, 20) + '...' : product.description }}</p>
+      </mat-card-content>
+   
+        
+          <button mat-flat-button color="primary" (click)="view(product)">Add to Cart</button>
+        </mat-card>
+     
+   
+  </div>
+  
+  
+</div>
+
+<div class="onsale">
+  <h1>On Sale</h1>
+  <div class="wrapper" >
+    <mat-card  *ngFor="let product of productlist.slice(0,6)" class="product-card">
+      <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+      </mat-card-header>
+      <a routerLink="/single"><img  src="{{product.image}}" alt="{{product.name}}"></a>
+      <mat-card-content>
+
+        <p>Price: {{ product.price }}</p>
+        <p class="review-description">
+         
+          {{ product.description.length > 20 ? product.description.substring(0, 20) + '...' : product.description }}
+        </p>
+        
+      </mat-card-content>
+   
+        
+          <button mat-flat-button color="primary" (click)="view(product)">Add to Cart</button>
+        </mat-card>
+     
+   
+  </div>
+</div>
+

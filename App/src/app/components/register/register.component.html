@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slide Navbar</title>
+
+</head>
+<body>
+  	
+	<div class="main">  
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+        <div class="signup">
+            <label for="chk" aria-hidden="true">Sign up</label>
+            <div class="wrapper">
+                <form class="cart-form" [formGroup]="cartForm" *ngIf="cartForm" ng>
+                    
+                    <mat-form-field class="mat-form-field">
+                      <mat-label>Name</mat-label>
+                      <input type="text" matInput formControlName="name" placeholder="Your name">
+                      <mat-hint>minimum 3 Character</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="mat-form-field">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                               placeholder="Ex. saa@gmail.com">
+                        <mat-hint>Errors appear instantly!</mat-hint>
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                          Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                          Email is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="mat-form-field">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="password" placeholder="Your Password">
+                        <mat-hint>minimum 8 Character</mat-hint>
+                      </mat-form-field>
+                     
+        <button for="chk" aria-hidden="true" mat-raised-button color="primary"[disabled]="cartForm.invalid || emailFormControl.invalid" (click)="onSubmit()">Submit</button>
+                  </form>
+                </div>
+            </div>
+			<div class="login">
+				<form [formGroup]="loginForm" *ngIf="loginForm" ng>
+					<label for="chk" aria-hidden="true">Login</label>
+          <mat-form-field class="mat-form-field">
+            <mat-label>Email</mat-label>
+            <input autocomplete="additional-name" type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                   placeholder="Ex. saa@gmail.com">
+            <mat-hint>Errors appear instantly!</mat-hint>
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="mat-form-field">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password" placeholder="Passwords">
+            <mat-hint>minimum 8 Character</mat-hint>
+          </mat-form-field>
+					
+                 
+					<button [disabled]="loginForm.invalid || emailFormControl.invalid" (click)="onsingin()">Login</button>
+				</form>
+			</div>
+	</div>
+</body>
+</html>

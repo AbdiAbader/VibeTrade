@@ -1,0 +1,20 @@
+<div class="container" >
+    <h2>Contact Us</h2>
+    <form class="contact_form" [formGroup]="contactusForm" *ngIf="contactusForm">
+      <div class="group">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" name="name" placeholder="Your Name">
+      </div>
+      <div class="group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" name="email" placeholder="Your Email">
+      </div>
+      <div class="group">
+        <label for="message">Message</label>
+        <textarea name="message" formControlName="message" placeholder="Your Message"></textarea>
+      </div>
+      <button class="btn"  (click)="contactus()">Send Message</button>
+    </form>
+    
+  </div>
+  

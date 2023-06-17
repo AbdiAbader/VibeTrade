@@ -1,0 +1,66 @@
+main {
+    font-weight: lighter;
+}
+.header{
+    margin-top: .5em;
+    margin-left: 17em;
+    margin-right: 15em;
+    width: 65%;
+    height: 150px;
+    background-color: #594626;
+    color: white;
+    font-weight: lighter;
+    text-align: center;
+    padding-top: 10px;
+}
+.container
+{
+    margin-left: 17em;
+    margin-right: 15em;
+    width: 70%;
+    height: 100%;
+    
+ 
+       
+      
+    
+}
+.tabs {
+    width: 93%;
+    height: auto;
+    border: 1px solid black;
+}
+h1, h3, label{
+    align-items: center;
+    padding: 20px;
+    font-weight: lighter;
+}
+hr {
+    width: 95%;
+    color: rgb(47, 46, 46);
+}
+input {
+    width: 200px;
+    height: 26px;
+    border-color: black;
+    
+    margin: 1.5em;
+    
+}
+
+
+.btn {
+    background-color: white;
+    width: 120px;
+    height: 30px;
+    color: black;
+    font-weight: lighter;
+    border-style: none;
+    &:hover {
+        background-color: rgb(131, 101, 26);
+        color: white;
+    }
+}
+form{
+    height: auto;
+}

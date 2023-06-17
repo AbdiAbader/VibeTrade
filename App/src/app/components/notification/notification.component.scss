@@ -1,0 +1,52 @@
+.notification-popup {
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    display: none;
+    width: 40%;
+    height: auto;
+     border: 1px solid #ff9900;
+    
+    &.active {
+      display: block;
+    }
+    
+    .notification-content {
+      margin-bottom: 10px;
+       font-weight: lighter;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      .notification-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      
+      .notification-message {
+        font-size: 14px;
+      }
+    }
+    
+    .close-button {
+      
+      margin-left: 90%;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      color: #ccc;
+      &:hover {
+        color: #000;
+        font-size: 25px;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  

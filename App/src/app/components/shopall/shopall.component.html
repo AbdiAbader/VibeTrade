@@ -1,0 +1,39 @@
+<div class="heading">
+    <h1>Shop All</h1>
+</div>
+<div class="shopall">
+
+    <div class="filter">
+  <h1>Filter By</h1>
+    <hr>
+
+    <div class="category">
+   
+        <a (click)="getpro()">All</a>
+        <a (click)="electronics()">Electronics</a>
+        <a (click)="furnitures()">Furniture</a>
+        <a >Clothes</a>
+        <a (click)="shoe()">Shoes</a>
+        <a >Sales</a>
+
+    </div>
+    <hr>
+    </div>
+    <div class="lists">
+        
+           
+           
+          
+                
+                  <div class="products" *ngFor="let product of productlist" >
+                    
+                       
+                            <img src="{{product.image}}" alt="{{product.name}}" (click)="view(product)">
+                              <p>{{product.name}}</p>
+                          
+                      
+                  
+                </div>
+            
+    </div>
+</div>

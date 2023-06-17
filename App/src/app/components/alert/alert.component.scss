@@ -1,0 +1,44 @@
+.logout-dialog {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+  
+  .logout-dialog h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .logout-dialog .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+  }
+  
+  .logout-dialog button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-dialog button:hover {
+    background-color: #45a049;
+  }
+  
+  .logout-dialog button:first-child {
+    background-color: #d32f2f;
+  }
+  
+  .logout-dialog button:first-child:hover {
+    background-color: #b71c1c;
+  }
+  

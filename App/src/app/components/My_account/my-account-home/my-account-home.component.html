@@ -1,0 +1,103 @@
+<main>
+    <div class="header">
+     <h1>{{name}}</h1>
+    </div>
+    <div class="container">
+
+   
+<mat-tab-group fitInkBarToContent>
+    <mat-tab label="My Orders">
+        <div class="tabs">
+       <h1>My Orders</h1>
+         <hr>
+        <h3>Current Orders</h3>
+        <div class="table_order">
+            <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+       class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+      Order Date
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.order_date | date:'dd/MM/yyyy'}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+      Status
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+      Payment Method
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.payment_method}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+      Action
+    </th>
+    <td mat-cell *matCellDef="let element"> <button class="btn">Cancel</button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+        </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="My Address">
+        <div class="tabs">
+            <h1>My Address</h1>
+            <hr> 
+            <h3>Current Address: {{address}}</h3>
+            <input type="text" [(ngModel)]="address" (ngModelChange)="hasChanges = true" name="addresfs" placeholder="New Address">
+            <br>
+             <button mat-raised-button color="primary"  [disabled]="!hasChanges" (click)="updateaddress()">Update</button>
+        </div>
+    </mat-tab>
+    <mat-tab label="My Wishlist">
+        <div class="tabs">
+            <h1>My Wishlist</h1>
+            <hr> 
+           <app-wishlist></app-wishlist>
+           
+        </div>
+    </mat-tab>
+    <mat-tab label="Profile">
+        <div class="tabs">
+            <h1>My Account</h1>
+            <hr> 
+            <h3> Login Email: Your Login email can't be changed<br>
+              Email:<span>{{email}}</span>
+            </h3>
+            <form>
+               <label>Name</label>
+               <br>
+                <input [(ngModel)]="name" (ngModelChange)="hasChanges = true" name="name">
+                <br>
+                <label>Current Password</label><br>
+                <input type="password" [(ngModel)]="current_password" (ngModelChange)="hasChanges = true" name="current_password" placeholder="Current passsword" >
+                <br>
+              
+                <input type="password" [(ngModel)]="new_pass1" (ngModelChange)="hasChanges = true" name="new_pass1" placeholder="new password">
+                <br>
+                
+                <input type="password"  [(ngModel)]="new_pass2" name="new_pass12" placeholder="confirm passwords">
+                <br>
+                <button mat-raised-button color="primary"  [disabled]="!hasChanges" (click)="updateuser()">Update</button>
+            </form>
+        </div>
+    </mat-tab>
+   
+  </mat-tab-group>
+</div>
+
+</main>

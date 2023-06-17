@@ -1,0 +1,153 @@
+.indivisual
+{
+    width: 900px;
+    height: 620px;
+    display: flex;
+}
+img {
+    margin-top: 4em;
+    margin-left: 2em;
+    margin-right: 3em;
+    border: #f0ca4d 2px solid;
+    width: 400px;
+    height: 400px;
+}
+input[type="checkbox"]{
+    transform: translate3D(-50%, -50%, 0);
+    margin-left: 0em;
+    
+    width: 1px;
+    height: 1px;
+   
+   
+   
+   
+     
+    
+    //The heart! :before is the static one, :after is the heart which will animate
+    &:before, &:after{
+        content: "";
+        cursor: pointer;
+        background-image: url(http://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/2000px-Heart_coraz%C3%B3n.svg.png);
+        background-size: cover;
+        height: 50px;
+        width: 50px;
+        position: absolute;
+        margin-top: 0.2em;
+        top: 50%;
+        left: 50%;
+       
+        transform: translate3D(-50%, -50%, 0);
+        filter: grayscale(100%);
+    }
+    
+    //This is the heart we're going to animate
+    &:after{
+        opacity: 0;
+        filter: grayscale(0%);
+    }
+    
+    //When it's checked, remove the greyscale from the static heart and animate the other heart
+    &:checked{
+        &:before{
+            filter: grayscale(0%);
+        }
+        
+        &:after{
+            animation: ascend ease-in-out 800ms;
+        }
+    }
+}
+
+//Ascend animation keyframes
+@-webkit-keyframes ascend{
+    0%{
+        transform: translate3D(-50%, -50%, 0);
+        opacity: 1;
+    }
+    100%{
+        transform: translate3D(-50%, -200%, 0);
+        opacity: 0;
+    }
+}
+@-moz-keyframes ascend{
+    0%{
+        transform: translate3D(-50%, -50%, 0);
+        opacity: 1;
+    }
+    100%{
+        transform: translate3D(-50%, -200%, 0);
+        opacity: 0;
+    }
+}
+@keyframes ascend{
+    0%{
+        transform: translate3D(-50%, -50%, 0);
+        opacity: 1;
+    }
+    100%{
+        transform: translate3D(-50%, -200%, 0);
+        opacity: 0;
+    }
+}
+
+.des{
+    font-weight: lighter;
+    margin-top: 4em;
+    
+}
+h1 {
+ 
+    font-weight: lighter;
+    font-size: 3em;
+}
+h2, h3, h4{
+    font-weight: lighter;
+}
+select {
+ 
+    margin-right: 3em;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    outline: none;
+    box-shadow: 0 0 5px #ccc;
+    width: 150px;
+}
+button {
+    margin-top: 1em;
+
+    margin-right: 2.3em;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    outline: none;
+    box-shadow: 0 0 5px #ccc;
+    width: 200px;
+
+}
+button:hover{
+    background-color: #ccc;
+}
+button:active{
+    background-color: #ccc;
+}
+.review-rating {
+    padding-top: 25px;
+    color: #f0ca4d;
+    font-size: 20px;
+  }
+  
+  .star {
+    margin-right: 2px;
+  }
+
+  a {
+    cursor: pointer;
+    padding-top: 10px;
+    margin-top: 3%;
+  }
