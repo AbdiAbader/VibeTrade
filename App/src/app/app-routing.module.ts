@@ -11,6 +11,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { ReviewComponent } from './components/review/review.component';
+import { OrderConfirmComponent } from './components/Carts/order-confirm/order-confirm.component';
 const routes: Routes = [
   { path: '', component: HomeComponent }
 ,
@@ -22,6 +23,8 @@ const routes: Routes = [
   {path: 'contactus', component: ContactusComponent},
   {path: 'wishlist', component: WishlistComponent, canActivate: [AuthguardService]},
   {path: 'review', component: ReviewComponent, canActivate: [AuthguardService]},
+  {path: 'orderconfirm', component: OrderConfirmComponent, canActivate: [AuthguardService]},
+
 ];
 
 

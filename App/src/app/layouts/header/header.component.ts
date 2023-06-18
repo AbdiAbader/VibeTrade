@@ -9,7 +9,7 @@ import { AuthguardService } from 'src/app/services/authguard.service';
 import { AuthserviceService } from 'src/app/services/Auth/authservice.service';
 import { UserauthServiceService } from 'src/app/services/userauth-service.service';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { WishserviceService } from 'src/app/services/wishlist/wishservice.service';
 import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { NotificationComponent } from 'src/app/components/notification/notification.component';
@@ -26,7 +26,7 @@ export class Searched implements OnInit{
   selectedvalue: number = 1;
   singleproduct: Product[] = [];
   expired: boolean = false;
-  
+  count = 0;  
 
   constructor(private dialogRef: MatDialogRef<Searched>, private singlecart: CastserviceService,
     private authguard: AuthserviceService, private snack: MatSnackBar,
@@ -118,19 +118,21 @@ export class HeaderComponent implements OnInit{
   searched: Product[] = [];
   name: string = '';
   isLoggedin: boolean = false;
-   
+   count = 0;
   constructor(private productservice: ProductserviceService, private cartservice: CastserviceService, 
     private dialog: MatDialog, private snackbar: MatSnackBar,  private userservice: UserauthServiceService,
-    private change: ChangeDetectorRef,
+   
     private authservice: AuthserviceService, private router: Router,
     private dialogref: MatDialog,
-    private notification: NotifyserviceService,
+   private notification: NotifyserviceService,
+   private route: ActivatedRoute,
    ) { 
       this.userservice.getuserbyid().subscribe((response: any) => {
         this.name = response.data.name;
       })
      this.loggedin();
      this.isloggedin();
+     console.log(this.authservice.getToken());
 
   
   
@@ -140,6 +142,13 @@ export class HeaderComponent implements OnInit{
     console.log(this.authservice.getToken());
     this.loggedin();
     this.isloggedin();
+    this.notification.getNotification().subscribe((response: any) => {
+      console.log(response);
+      this.count = response.data.filter((item: any) => item.read === false).length;
+    }
+    )
+  
+
     
   }
 
@@ -182,10 +191,16 @@ counter(){
 }
 logout(){
   this.dialogref.open(AlertComponent)
+  this.dialogref.afterAllClosed.subscribe(() => {
+    console.log('closed');
+    this.loggedin();
+    this.isloggedin();
+    this.router.navigate(['']);
+  })
   
 }
-async loggedin(){
-  this.change.detectChanges();
+ async loggedin(){
+ 
   this.isLoggedin = await this.authservice.isAuthenticated();
    await this.authservice.checkTokenExpiration().subscribe(isValid => {
     this.isLoggedin = isValid;
@@ -193,19 +208,23 @@ async loggedin(){
 
 
 }
-isloggedin(){
+ isloggedin(){
 
   return this.isLoggedin;
 }
+
+
 notify(){
   this.dialog.open(NotificationComponent);
-}
-async notification_counter(){ 
-  let count = 0;
-  await this.notification.getNotification().subscribe((response: any) => {
-    count = response.data.length;
+  this.dialog.afterAllClosed.subscribe(() => {
+    this.notification.getNotification().subscribe((response: any) => {
+      console.log(response);
+      this.count = response.data.filter((item: any) => item.read === false).length;
+    }
+    )
   }
   )
-  return count;
+ 
+
 }
 }

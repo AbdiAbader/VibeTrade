@@ -6,6 +6,8 @@ import { User } from './user.interface';
 import { login } from './user.interface';
 import { AuthserviceService } from './Auth/authservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HomeComponent } from '../components/home/home.component';
+import { HeaderComponent } from '../layouts/header/header.component';
 
 
 
@@ -56,8 +58,7 @@ private handleSuccessfulLogin(response: any): void {
   console.log('Login successful');
   this.authService.login(response.token);
   
-  window.location.href = '';
-
+ window.location.href = '';
   
 
 

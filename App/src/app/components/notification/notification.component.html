@@ -2,8 +2,9 @@
     <div class="notification-content" *ngFor="let not of notifications">
       <div class="notification-title">{{not.title}}</div>
       <div class="notification-message">{{not.message}} </div>
-      <button class="close-button">&times;</button>
+      <button class="close-button" (click)="seen(not)">&times;</button>
      
     </div>
+    <h1 *ngIf="notifications.length==0">No Notifications</h1>
    
   </div>

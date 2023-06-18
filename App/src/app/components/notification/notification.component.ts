@@ -13,15 +13,21 @@ export class NotificationComponent implements OnInit{
   }
   ngOnInit(): void {
     this.getNotification();
-    console.log(this.getNotification())
+  
   }
 
 getNotification() {
 this.notify.getNotification().subscribe((res: any) => {
   this.notifications = res.data;
-  console.log(res.data)
+
 }
 )
+}
+seen(not: any) {
+  this.notify.notificationRead(not).subscribe((res: any) => {
+    this.getNotification();
+  }
+  )
 }
     
 }

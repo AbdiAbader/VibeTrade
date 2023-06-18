@@ -1,5 +1,6 @@
 <div class="wishlist-container">
     <ul class="wishlist-items">
+      <h1 *ngIf="wishlistItems.length === 0">No items in Wishlist</h1>
       <li *ngFor="let item of wishlistItems">
         <img src="{{item.image}}">
         <div class="item-details">

@@ -11,6 +11,7 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { UserauthServiceService } from 'src/app/services/userauth-service.service';
+import { NotifyserviceService } from 'src/app/services/notify/notifyservice.service';
 
 
 
@@ -26,11 +27,7 @@ export class MycartsComponent implements OnInit  {
  empty = false;
  orderitem: OrderItem[] = []
  msg = '';
-  order: Orders = {
-    user: '',
-    payment_method: '',
-    order_items: this.orderitem
-  }
+  order: any
   card: any;
 
   selectedValues: number[] = [];
@@ -43,11 +40,15 @@ export class MycartsComponent implements OnInit  {
 
   constructor(private cartservice: CastserviceService,
     private orderservice: OrderserviceService, private _snackBar: MatSnackBar,
-    private userauthservice: UserauthServiceService){
-
+    private userauthservice: UserauthServiceService,
+    private notify: NotifyserviceService ){
+      
   }
 
   ngOnInit(): void {
+
+   
+
     this.cart = this.cartservice.getcart()
     this.total();
     this.invokeStripe();
@@ -76,9 +77,11 @@ export class MycartsComponent implements OnInit  {
 
 
 
-  checkout(){
+ async checkout(){
+    
     if (this.shipping === '') {
       this.snackbar("Please add shipping address");
+      return;
     }
    
    
@@ -99,21 +102,23 @@ export class MycartsComponent implements OnInit  {
         quantity: item.selectedvalue
       })
       }
-    this.order = {
-      user: '64734cafa0bc9fa80d6fc663',
+   this.order = {
       payment_method: this.payment,
-      order_items: this.orderitem
-     
-    }
+      order_items: this.orderitem,
+   }
     
    
-    this.orderservice.addorderitem(this.order)
+    await this.orderservice.addorderitem(this.order)
 
-    
-    this.cartservice.freecart();
-    this.total();
+   
     this.snackbar("Order placed successfully");
+    this.notify.createNotification({"title": "Order Placed Successfully", "message": "Your order has been placed successfully"})
+    for (let item of this.cartservice.getcart()) {
+      this.cartservice.removefromcart(item.product, item.selectedvalue)
+    }
   }
+  
+    
 }
   }
 

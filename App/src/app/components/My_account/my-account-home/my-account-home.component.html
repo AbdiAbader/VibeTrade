@@ -1,3 +1,4 @@
+
 <main>
     <div class="header">
      <h1>{{name}}</h1>
@@ -39,12 +40,20 @@
     <td mat-cell *matCellDef="let element"> {{element.payment_method}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="see" class="see">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+      See Details
+    </th>
+    <td mat-cell *matCellDef="let element"> <img src="https://img.icons8.com/?size=1x&id=30468&format=png" (click)="view_order(element)">
+    
+     </td>
+  </ng-container>
   <!-- Symbol Column -->
   <ng-container matColumnDef="symbol">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
       Action
     </th>
-    <td mat-cell *matCellDef="let element"> <button class="btn">Cancel</button> </td>
+    <td mat-cell *matCellDef="let element"> <img src="https://img.icons8.com/?size=1x&id=32645&format=png" (click)="remove_order(element)"> </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -55,17 +64,19 @@
     </mat-tab>
     <mat-tab label="My Address">
         <div class="tabs">
-            <h1>My Address</h1>
+            <h1><img src="https://img.icons8.com/?size=1x&id=lXT6RzjNrDdt&format=png"> My Address</h1>
             <hr> 
+            <div class="address">
             <h3>Current Address: {{address}}</h3>
             <input type="text" [(ngModel)]="address" (ngModelChange)="hasChanges = true" name="addresfs" placeholder="New Address">
             <br>
              <button mat-raised-button color="primary"  [disabled]="!hasChanges" (click)="updateaddress()">Update</button>
         </div>
+      </div>
     </mat-tab>
     <mat-tab label="My Wishlist">
         <div class="tabs">
-            <h1>My Wishlist</h1>
+            <h1><img src="https://img.icons8.com/?size=1x&id=rMdkAyHngv7o&format=png">My Wishlist</h1>
             <hr> 
            <app-wishlist></app-wishlist>
            
@@ -73,28 +84,44 @@
     </mat-tab>
     <mat-tab label="Profile">
         <div class="tabs">
-            <h1>My Account</h1>
+          
+            <h1><img src="https://img.icons8.com/?size=1x&id=91244&format=png">My Account</h1>
             <hr> 
-            <h3> Login Email: Your Login email can't be changed<br>
-              Email:<span>{{email}}</span>
+            <div class="myprofile">
+            <h3> Your Login email can't be changed<br>
+              Email: <span>{{email}}</span><br>
+              Current Name: <span>{{name}}</span>
             </h3>
-            <form>
+            <form [formGroup]="updateform" *ngIf="updateform">
                <label>Name</label>
-               <br>
-                <input [(ngModel)]="name" (ngModelChange)="hasChanges = true" name="name">
-                <br>
-                <label>Current Password</label><br>
-                <input type="password" [(ngModel)]="current_password" (ngModelChange)="hasChanges = true" name="current_password" placeholder="Current passsword" >
-                <br>
+                <input type="text" formControlName="name">
+             
+                <label>Current Password</label>
+                <input type="password" formControlName="cp" >
+             
               
-                <input type="password" [(ngModel)]="new_pass1" (ngModelChange)="hasChanges = true" name="new_pass1" placeholder="new password">
-                <br>
+                <input type="password" formControlName="new_1">
+                <input type="password" formControlName="new_2">
                 
-                <input type="password"  [(ngModel)]="new_pass2" name="new_pass12" placeholder="confirm passwords">
+                
+                <label>choose update</label>
+                <mat-radio-group
+                  aria-labelledby="example-radio-group-label"
+                  class="example-radio-group"
+                 >
+                  <mat-radio-button class="example-radio-button"  [value]="name">
+                    name
+                  </mat-radio-button>
+                  <mat-radio-button class="example-radio-button"  formControlName="password">
+                    Password
+                  </mat-radio-button>
+                </mat-radio-group>
                 <br>
-                <button mat-raised-button color="primary"  [disabled]="!hasChanges" (click)="updateuser()">Update</button>
+               
+                <button mat-raised-button color="primary"  (click)="updateuser()">Update</button>
             </form>
         </div>
+      </div>
     </mat-tab>
    
   </mat-tab-group>

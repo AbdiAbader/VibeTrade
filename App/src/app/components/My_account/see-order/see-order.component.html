@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="header">
+<img src="https://img.icons8.com/?size=1x&id=119192&format=png">
+<h1> Your Order Details </h1> 
+<img src="https://img.icons8.com/?size=1x&id=119192&format=png">
+</div>
+<div class="order-items">
+    <div class="order" *ngFor="let item of order.order_items">
+      <img class="order-image" [src]="item.product.image" alt="{{ item.product.name }}">
+      <div class="order-content">
+        <h1>Name: {{ item.product.name }}</h1>
+        <h2>Quantity: {{ item.quantity }}</h2>
+        <h2>Price: {{ item.product.price }}</h2>
+      
+      </div>
+      <img src="https://img.icons8.com/?size=1x&id=91260&format=png">
+    </div>
+  </div>
+  
+</div>

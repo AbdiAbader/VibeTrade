@@ -35,5 +35,13 @@ addReplyofReply(id: string, content: any): Observable<reviewapires>{
   return this.http.post<reviewapires>(this.Api+'reply/reply/'+id, replay, {headers: {Authorization: `Bearer ${this.authService.getToken()}`}});
 }
 
+replylike(id: string,rid: string): Observable<reviewapires>{
+  return this.http.put<reviewapires>(this.Api+'reply/like/'+id, {id: rid}, {headers: {Authorization: `Bearer ${this.authService.getToken()}`}});
+}
+replydislike(id: string, rid: string): Observable<reviewapires>{
+  return this.http.put<reviewapires>(this.Api+'reply/dislike/'+id ,{id: rid}, {headers: {Authorization: `Bearer ${this.authService.getToken()}`}});
+
+
+}
 
 }

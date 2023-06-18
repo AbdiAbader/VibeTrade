@@ -2,26 +2,46 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Orders, Orderapiresponse } from 'src/Interfaces/order';
+import { Router } from '@angular/router';
 import { AuthserviceService } from '../Auth/authservice.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root'
 })
 export class OrderserviceService {
 orderapi: string = 'http://0.0.0.0:3000/order/'
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private snack: MatSnackBar, private router: Router) { }
 
 getorderitems(): Observable<Orderapiresponse> {
   return this.http.get<Orderapiresponse>(this.orderapi, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
 }
-addorderitem(order: Orders): void{
+addorderitem(order: any): void{
    
-  this.http.post<Orderapiresponse>(this.orderapi, order, {headers:  {Authorization: `Bearer ${localStorage.getItem('token')}`}}).subscribe((res: any) => {
-    console.log(res);
+  this.http.post<Orderapiresponse>(this.orderapi, order, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).subscribe((res: any) => {
+    if (res.status == 'Success') {
+      this.snack.open('Order placed', 'close', {duration: 2000});
+      
+      this.router.navigate(['/orderconfirm']);
+    }
   }
   )
 }
-  
+deleteorder(id: number): void{
+  this.http.delete(this.orderapi + id, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).subscribe((res: any) => {
+   if(res.status == 'Success'){
+     this.snack.open('Order deleted', 'close', {duration: 2000});
+    
+    
 
+
+    
+   }
+   else{
+      this.snack.open('Server Error ', 'close', {duration: 2000});
+    }
+  }
+  )
+}
 
 
 }

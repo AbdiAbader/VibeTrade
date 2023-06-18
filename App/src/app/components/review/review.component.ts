@@ -110,6 +110,10 @@ getReview(){
 addreview(){
 
  this.dialog.open(RpopComponent);
+ this.dialog.afterAllClosed.subscribe((res: any) => {
+    this.getReview();
+  }
+  )
 }
 submitReply()
 {}
@@ -132,24 +136,24 @@ toggleReplies(item: any) {
 
 likes(item: any) {
 }
-updateLike(item: any) {
+async updateLike(item: any) {
 
-  
-    this.reviewservice.updatelike(item._id).subscribe((response: any) => {
+
+   await this.reviewservice.updatelike(item._id).subscribe((response: any) => {
     console.log(response);
     this.getReview();
   }
   )}
 
-updateDislike(item: any) {
+async updateDislike(item: any) {
 
-  this.reviewservice.updatedislike(item._id).subscribe((response: any) => {
+  await this.reviewservice.updatedislike(item._id).subscribe((response: any) => {
     console.log(response);
     this.getReview();
   }
   )
 }
-like(x=0){
+like(){
  return this.reivew.likes.length;
 }
 dislike(){
@@ -158,7 +162,7 @@ dislike(){
 submitreply(item: any){
   this.reviewservice.addReply(item._id, this.replyContent).subscribe((response: any) => {
     console.log(response);
-    this.getReview();
+    this.dialog.closeAll();
   }
   )
 }
@@ -169,8 +173,30 @@ submitreplyreply(reply: any){
   }
   )
 }
+updatereplyLike(item: any, reply: any){
+  this.reviewservice.replylike(item._id, reply._id).subscribe((response: any) => {
+    console.log(response);
+    this.getReview();
+  }
+  )
 
+}
+updatereplydisLike(item: any, reply: any){
+  this.reviewservice.replydislike(item._id, reply._id).subscribe((response: any) => {
+    console.log(response);
+    this.getReview();
+  }
+  )
 
 }
 
+totalstar(){
+  let total = 0;
+  this.reivew.forEach((review: any) => {
+    total += review.rating;
+  }
+  )
+  return total/this.reivew.length;
+}
 
+}

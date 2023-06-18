@@ -23,7 +23,7 @@ export class AlertComponent {
         verticalPosition: 'top',
         horizontalPosition: 'center'
       });
-      window.location.href = '';
+    this.dialog.closeAll();
     
 
      }

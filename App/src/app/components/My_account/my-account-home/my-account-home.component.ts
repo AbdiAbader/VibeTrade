@@ -1,7 +1,8 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-
-import { Observable } from 'rxjs';
-
+import { Component, OnInit, AfterViewInit, ViewChild, Output } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
+import { FormBuilder, FormControlName, Validators, FormGroup, FormControl } from '@angular/forms';
+import { SeeOrderComponent } from '../see-order/see-order.component';
 import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
@@ -15,7 +16,8 @@ import {
   MatSnackBarModule,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
-
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-account-home',
@@ -24,8 +26,9 @@ import {
   
 })
 export class MyAccountHomeComponent implements OnInit {
+  see: boolean = false;
   order: Order[] = [];
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'see','symbol'];
   dataSource: any;
   hasChanges: boolean = false;
   email: string = '';
@@ -38,10 +41,20 @@ export class MyAccountHomeComponent implements OnInit {
   pass: string = '';
   user: User[] = [];
 
+  updateform: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    cp: new FormControl('',),
+    new_1: new FormControl(''),
+    new_2: new FormControl(''),
+  });
+
   
  constructor (private _liveAnnouncer: LiveAnnouncer,
   private orderservice: OrderserviceService, private userservice: UserauthServiceService, 
-  private _snackBar: MatSnackBar) {
+  private _snackBar: MatSnackBar,
+  private frombuilder: FormBuilder,
+  
+  private dialog: MatDialog) {
     
    }
  @ViewChild(MatSort) sort: MatSort = new MatSort();
@@ -91,17 +104,27 @@ userinfo()
 }
 updateuser()
 {
+const info = {
+  name: this.updateform.value.name,
+  cp: this.updateform.value.cp,
+  new_password: this.updateform.value.new_1,
+  new_password2: this.updateform.value.new_2
 
-
+}
+if (info.name === '' && info.cp === '') {
+  this.openSnackBar('Nothing to update');
+  return;
+}
   
 
   
   
 }
-openSnackBar() {
-  this._snackBar.open('Cannonball!!', 'Splash', {
+openSnackBar(msg: string) {
+  this._snackBar.open(msg, 'Close', {
     horizontalPosition: 'center',
     verticalPosition: 'top',
+   
     duration: 2000
   });
 }
@@ -109,14 +132,73 @@ openSnackBar() {
   { 
     
     this.userservice.updateuser({
-      "shippingAddress": "Addiss"
+      "shippingAddress": this.address
   }).subscribe(
       (response: any) => {
         console.log(response);
+        if (response.status === 'success') {
+          this.openSnackBar('Address updated');
+        }
+        else {
+          this.openSnackBar('Try Again');
+        }
        
       }
     );
   }
+  view_order(order: any){
+    console.log(order);
+    this.dialog.open(SeeOrderComponent, {
+      data: order
+    });
+  }
+  update_table(){
+
+    this.getOrders();
+  }
+  remove_order(order: any){
+this.dialog.open(ConfirmDialogComponent, {
+  data: order
+});
+this.dialog.afterAllClosed.subscribe((res: any) => {
+
   
+    this.getOrders();
+ 
 }
 
+);
+
+
+
+
+}
+
+}
+
+@Component({
+  selector: 'app-confirm-dialog',
+  templateUrl: './confirm-dialog.component.html',
+  styleUrls: ['./my-account-home.component.scss']
+})
+
+export class ConfirmDialogComponent {
+
+  constructor(private dialog: MatDialog, private ordersevice: OrderserviceService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private router: Router){}
+   delete(){
+    console.log(this.data);
+    const id = this.data._id;
+
+  this.ordersevice.deleteorder(id)
+ this.dialog.closeAll();
+
+
+
+
+  }
+  cancel(){
+    this.dialog.closeAll();
+  }
+}

@@ -10,6 +10,7 @@ import { UserauthServiceService } from '../../services/userauth-service.service'
 import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { HomeComponent } from '../home/home.component';
+import { NotifyserviceService } from 'src/app/services/notify/notifyservice.service';
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -38,8 +39,7 @@ export class RegisterComponent implements  OnInit{
     });
 
   constructor(private formBuilder: FormBuilder, private userservice: UserauthServiceService, private router: Router,
-    private dialog: MatDialog, private location: Location,
-    private change: ChangeDetectorRef) {}
+    private dialog: MatDialog, private notify: NotifyserviceService) {}
 
   ngOnInit() {
     this.buildForm();
@@ -82,10 +82,7 @@ export class RegisterComponent implements  OnInit{
     try {
       
      await this.userservice.longinUser(userdatalogin);
-     if (await this.userservice.isAuthenticated){
-      this.change.detectChanges();
-      this.router.navigate(['']);
-     }
+
    
     } catch (error) {
       console.error(error);

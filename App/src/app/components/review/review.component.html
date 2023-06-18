@@ -5,7 +5,7 @@
       {{ pro.name }}
       <div class="rate_counter">
         <div class="counter">
-          <span class="counter_number">4</span>
+          <span class="counter_number">{{totalstar()>=0 ? totalstar() : 1}}</span>
           <span class="counter_text">out of 5</span>
         </div>
       </div>
@@ -37,6 +37,7 @@
             {{ item.content }}
           </p>
           <span class="review-author">Author: {{ item.user.name }}</span>
+  
         </div>
         <div class="review-actions">
           <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="updateLike(item)">
@@ -59,10 +60,10 @@
               
             </div>
             <p class="reply-content">{{ reply.content }}</p>
-            <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="updateLike(item)">
+            <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="updatereplyLike(item, reply)">
               <mat-icon>favorite</mat-icon>
             </button> ({{ reply.likes.length }})
-           <img src="https://img.icons8.com/?size=1x&id=77574&format=png" (click)="updateDislike(item)"> ({{ reply.dislikes.length }})
+           <img src="https://img.icons8.com/?size=1x&id=77574&format=png" (click)="updatereplydisLike(item, reply)"> ({{ reply.dislikes.length }})
            
           </div>
        

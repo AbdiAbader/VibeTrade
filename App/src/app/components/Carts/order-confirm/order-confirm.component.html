@@ -1,0 +1,27 @@
+<div class="confirm">
+    <h1> <img src="https://img.icons8.com/?size=1x&id=yHeF9urVx2aM&format=png"> Order Confirmed <img src="https://img.icons8.com/?size=1x&id=yHeF9urVx2aM&format=png"></h1>
+    <div class="orderlist">
+       
+        <div class="ordercontent" *ngFor="let items of order.order_items">
+           
+            <div class="orderinfo">
+                <img src="{{items.product.image}}" alt="">
+                <div class="des">
+                <div class="ordername">Name : {{items.product.name}}</div>
+                <div class="orderprice">Price : {{items.product.price}}</div>
+                <div class="orderquantity">quantity : {{items.quantity}}</div>
+                <div class="orderquantity">Total : {{items.product.price * items.quantity}}</div>
+            </div>
+                </div>
+   <img src="https://img.icons8.com/?size=1x&id=63760&format=png">
+        </div>
+    </div>
+    <div class="order_footer">
+    <p>Thanks for Using Vibetrade</p>
+    <p>Shippment will be delivered within  days</p>
+    <p>For any queries contact us </p>
+    <a routerLink="" routerLinkActive="">Go Back to Home</a>
+</div>
+  
+
+</div>

@@ -24,7 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 import { CartHomeComponent } from './components/Carts/cart-home/cart-home.component';
 import { MycartsComponent } from './components/Carts/mycarts/mycarts.component';
-
+import { ConfirmDialogComponent } from './components/My_account/my-account-home/my-account-home.component';
 import { MyAccountHomeComponent } from './components/My_account/my-account-home/my-account-home.component';
 
 import {MatTabsModule} from '@angular/material/tabs';
@@ -47,6 +47,8 @@ import { ReviewComponent } from './components/review/review.component';
 import { RpopComponent } from './components/review/review.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { NotificationComponent } from './components/notification/notification.component';
+import { SeeOrderComponent } from './components/My_account/see-order/see-order.component';
+import { OrderConfirmComponent } from './components/Carts/order-confirm/order-confirm.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +68,10 @@ import { NotificationComponent } from './components/notification/notification.co
     AlertComponent,
     ReviewComponent,
     RpopComponent,
-    NotificationComponent
+    NotificationComponent,
+    SeeOrderComponent,
+    ConfirmDialogComponent,
+    OrderConfirmComponent
 
   
 
@@ -100,6 +105,8 @@ import { NotificationComponent } from './components/notification/notification.co
     FontAwesomeModule,
     MatBadgeModule,
     MatChipsModule
+
+   
   
 
     

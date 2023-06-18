@@ -18,6 +18,7 @@ export class AuthguardService implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
     return this.authguard();
+   
 
   }
   snackbaropen(message: string) {
@@ -30,23 +31,32 @@ export class AuthguardService implements CanActivate {
   }
   async authguard() {
 
-    await this.authService.checkTokenExpiration().subscribe(isValid => {
-      this.condition = isValid;
-    }
-    );
+    console.log(this.condition + 'authService'); 
    this.condition =  await this.authService.isAuthenticated()
-    if ( this.condition) {
+   await this.authService.checkTokenExpiration().subscribe(isValid => {
+    this.condition = isValid;
+    console.log(isValid)
+    console.log(this.condition+ 'authguard');  
+    if (this.condition === true) {
+      console.log(this.condition + 'after if');
       console.log('Access granted. User is authenticated.');
       return true;
     }
     this.snackbaropen('Please Login to continue');
     console.log('Access denied. User is not authenticated.');
     return this.router.createUrlTree(['/register']);
+  
+      
+  
   }
+  );
+
+
+  return this.condition;
 
 }
 
-
+}
 
 
 

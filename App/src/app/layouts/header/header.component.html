@@ -51,7 +51,7 @@
 			  <a (click)="logout()">Logout</a>
 			 
 			</div>
-		  
+			
 		  </div>
 			
 
@@ -63,8 +63,11 @@
 		<a routerLink="/cart" routerLinkActive="active">🛒Cart
 			<span *ngIf="counter() > 0" class="cart-counter">{{ counter() }}</span>
 		</a>
-
-	  <img src="https://img.icons8.com/?size=1x&id=110472&format=png" *ngIf="isloggedin()" (click)="notify()" >{{ notification_counter() }}
+		<div class="not" *ngIf="isloggedin()">
+			<img src="https://img.icons8.com/?size=1x&id=110472&format=png" (click)="notify()">
+			<span class="notification-count">{{count}}</span>
+		  </div>
+		  
 		
 	</div>
 	
