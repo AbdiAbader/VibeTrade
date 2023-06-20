@@ -26,7 +26,7 @@ import { CartHomeComponent } from './components/Carts/cart-home/cart-home.compon
 import { MycartsComponent } from './components/Carts/mycarts/mycarts.component';
 import { ConfirmDialogComponent } from './components/My_account/my-account-home/my-account-home.component';
 import { MyAccountHomeComponent } from './components/My_account/my-account-home/my-account-home.component';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
@@ -104,9 +104,9 @@ import { OrderConfirmComponent } from './components/Carts/order-confirm/order-co
     MatListModule,
     FontAwesomeModule,
     MatBadgeModule,
-    MatChipsModule
+    MatChipsModule,
 
-   
+    MatPaginatorModule
   
 
     
