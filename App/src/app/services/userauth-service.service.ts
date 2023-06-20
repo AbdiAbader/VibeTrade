@@ -6,8 +6,8 @@ import { User } from './user.interface';
 import { login } from './user.interface';
 import { AuthserviceService } from './Auth/authservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HomeComponent } from '../components/home/home.component';
-import { HeaderComponent } from '../layouts/header/header.component';
+
+import { ProgressService } from './progress/progress.service';
 
 
 
@@ -24,11 +24,24 @@ export class UserauthServiceService {
 
 
       constructor(private http: HttpClient, private router: Router, private authService: AuthserviceService,
-        private snackbar: MatSnackBar) {
+        private snackbar: MatSnackBar,
+        private progress: ProgressService) { }
 
-       }
- signupUser(user: User): Observable<User> {
-  return this.http.post<User>(this.ApiUrl, user);
+       
+ signupUser(user: User): void {
+ this.progress.setProgress(true);
+  this.http.post(this.ApiUrl, user).subscribe(
+    (response: any) => {
+      if (response.status === 'Success') {
+        this.snackbaropen('Signup successful \n Please Login');
+        this.router.navigate(['/register']);
+        this.progress.setProgress(false);
+      }
+    },
+    (error: any) => {
+      this.snackbaropen("Email already exists");
+    }
+  );
  
 
 }

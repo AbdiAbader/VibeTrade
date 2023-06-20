@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import { Component, OnInit,EventEmitter, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -27,6 +27,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 })
 export class RegisterComponent implements  OnInit{
+  progress = false;
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   matcher = new MyErrorStateMatcher();
@@ -38,6 +39,8 @@ export class RegisterComponent implements  OnInit{
       password: new FormControl(),
     });
 
+
+    
   constructor(private formBuilder: FormBuilder, private userservice: UserauthServiceService, private router: Router,
     private dialog: MatDialog, private notify: NotifyserviceService) {}
 
@@ -58,6 +61,7 @@ export class RegisterComponent implements  OnInit{
    
   }
  onSubmit() {
+  this.progress = true;
   const userdata = {
     name: this.cartForm.value.name,
     password: this.cartForm.value.password,
@@ -66,20 +70,26 @@ export class RegisterComponent implements  OnInit{
 
 
     }
-    this.userservice.signupUser(userdata).subscribe(
-      response => console.log('Success!', response),
-      error => console.error('Error!', error)
-    );
+    this.userservice.signupUser(userdata);
+   setTimeout(() => {
+    this.progress = false;
+    
+   }, 3000);
 
   }
 
   async onsingin() {
+    this.progress = true;
     const userdatalogin = {
       email: this.emailFormControl.value || 'aaaa',
       password: this.loginForm.value.password
     }
 
     try {
+      setTimeout(() => {
+        this.progress = false;
+        
+       }, 3000);
       
      await this.userservice.longinUser(userdatalogin);
 

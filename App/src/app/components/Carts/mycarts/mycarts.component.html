@@ -1,9 +1,13 @@
+
+
  <div class="mycart">
    
     
     <div class="wrapper">
+      
       <h1><img src="https://img.icons8.com/?size=1x&id=122591&format=png">My cart</h1>
         <hr>
+   
         <div class="product-card" *ngFor="let item of cart">
             <div class="product-card_list">
          <div class="section1">
@@ -35,7 +39,8 @@
           </div>
           <div class="order_summary">
             <h1>Order Summary</h1>
-            <hr>
+            <hr >
+            <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
             <h2>SubTotal: {{total()}}</h2>
             <h4>Payment Method</h4>
             <input type="radio" [(ngModel)]="payment" name="payment" value="cash on delivery" checked>Cash on Delivery

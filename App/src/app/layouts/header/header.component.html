@@ -62,10 +62,12 @@
 		
 		<a routerLink="/cart" routerLinkActive="active">🛒Cart
 			<span *ngIf="counter() > 0" class="cart-counter">{{ counter() }}</span>
+			
+
 		</a>
 		<div class="not" *ngIf="isloggedin()">
 			<img src="https://img.icons8.com/?size=1x&id=110472&format=png" (click)="notify()">
-			<span class="notification-count">{{count}}</span>
+			<span class="notification-count" *ngIf="count > 0">{{count}}</span>
 		  </div>
 		  
 		

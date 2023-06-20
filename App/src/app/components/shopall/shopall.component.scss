@@ -16,6 +16,7 @@
 }
 .shopall {
     display: flex;
+    margin: 1%;
 }
 .filter {
     width: 20%;
@@ -59,9 +60,11 @@
 }
 .products img {
     width: 325px;
+  
     &:hover
     {
         width: 350px;
+       
 
     }
 }

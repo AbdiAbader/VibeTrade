@@ -8,11 +8,12 @@ import { Product } from 'src/Interfaces/product';
 })
 export class CastserviceService {
   total: number = 0;
-  quantity: number = 0;
  cart: Cart[] = [];
  onecart: Product[] = [];
  selectedvalue: number = 1;
   constructor() { }
+
+  
   singlecart(product: Product){
     this.onecart = [];
    this.onecart.push(product);

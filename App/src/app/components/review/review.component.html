@@ -1,8 +1,8 @@
 
   <div class="review_header">
-    <div class="review_container" *ngFor="let pro of pordutinfo">
-      <img src="{{ pro.image }}" class="logo">
-      {{ pro.name }}
+    <div class="review_container" *ngIf="pordutinfo">
+      <img src="{{ pordutinfo.image }}" class="logo">
+      {{ pordutinfo.name }}
       <div class="rate_counter">
         <div class="counter">
           <span class="counter_number">{{totalstar()>=0 ? totalstar() : 1}}</span>

@@ -15,16 +15,11 @@ orderapi: string = 'http://0.0.0.0:3000/order/'
 getorderitems(): Observable<Orderapiresponse> {
   return this.http.get<Orderapiresponse>(this.orderapi, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
 }
-addorderitem(order: any): void{
+addorderitem(order: any): Observable<string>{
    
-  this.http.post<Orderapiresponse>(this.orderapi, order, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).subscribe((res: any) => {
-    if (res.status == 'Success') {
-      this.snack.open('Order placed', 'close', {duration: 2000});
-      
-      this.router.navigate(['/orderconfirm']);
-    }
-  }
-  )
+ return this.http.post<string>(this.orderapi, order, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+  
+  
 }
 deleteorder(id: number): void{
   this.http.delete(this.orderapi + id, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).subscribe((res: any) => {

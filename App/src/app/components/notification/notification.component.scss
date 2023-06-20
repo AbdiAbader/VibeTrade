@@ -19,14 +19,17 @@
     }
     
     .notification-content {
-      margin-top: 10px;
+      margin-top: 5px;
       margin-bottom: 10px;
        font-weight: lighter;
        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       .notification-title {
+        align-items: center;
         font-size: 18px;
+        color:#191919;
         font-weight: bold;
         margin-bottom: 5px;
+        margin-top: 5px;
       }
       
       .notification-message {
@@ -37,6 +40,7 @@
     .close-button {
       
       margin-left: 90%;
+      
       background-color: transparent;
       border: none;
       cursor: pointer;

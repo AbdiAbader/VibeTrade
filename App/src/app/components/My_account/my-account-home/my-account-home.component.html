@@ -3,6 +3,7 @@
     <div class="header">
      <h1>{{name}}</h1>
     </div>
+    <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
     <div class="container">
 
    
@@ -103,20 +104,13 @@
                 <input type="password" formControlName="new_1">
                 <input type="password" formControlName="new_2">
                 
-                
-                <label>choose update</label>
-                <mat-radio-group
-                  aria-labelledby="example-radio-group-label"
-                  class="example-radio-group"
-                 >
-                  <mat-radio-button class="example-radio-button"  [value]="name">
-                    name
-                  </mat-radio-button>
-                  <mat-radio-button class="example-radio-button"  formControlName="password">
-                    Password
-                  </mat-radio-button>
+                <mat-radio-group aria-label="Select an option" formControlName="updateOption">
+                  <mat-radio-button  name="updateOption" value="name">Update Name</mat-radio-button>
+                  <mat-radio-button  name="updateOption"  value="password">Update PassWord</mat-radio-button>
                 </mat-radio-group>
-                <br>
+                
+               
+                
                
                 <button mat-raised-button color="primary"  (click)="updateuser()">Update</button>
             </form>

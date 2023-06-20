@@ -43,5 +43,14 @@ replydislike(id: string, rid: string): Observable<reviewapires>{
 
 
 }
+setreview(product: string){
+  sessionStorage.removeItem('review');
+    sessionStorage.setItem('review', product);
+  
+
+}
+getreview(): any{
+  return sessionStorage.getItem('review');
+}
 
 }

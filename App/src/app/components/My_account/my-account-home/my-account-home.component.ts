@@ -26,19 +26,20 @@ import { Router } from '@angular/router';
   
 })
 export class MyAccountHomeComponent implements OnInit {
+  progress: boolean = false;
   see: boolean = false;
   order: Order[] = [];
   displayedColumns: string[] = ['position', 'name', 'weight', 'see','symbol'];
   dataSource: any;
   hasChanges: boolean = false;
   email: string = '';
-  name: string = '';
+  name: string = 'sdds';
   current_password: string = '';
   new_pass1: string = '';
   new_pass2: string = '';
   address: string = '';
   userdata: User[] = [];
-  pass: string = '';
+  pass: string = 'asdsdss';
   user: User[] = [];
 
   updateform: FormGroup = new FormGroup({
@@ -46,6 +47,7 @@ export class MyAccountHomeComponent implements OnInit {
     cp: new FormControl('',),
     new_1: new FormControl(''),
     new_2: new FormControl(''),
+    updateOption: new FormControl(''),
   });
 
   
@@ -57,6 +59,7 @@ export class MyAccountHomeComponent implements OnInit {
   private dialog: MatDialog) {
     
    }
+  
  @ViewChild(MatSort) sort: MatSort = new MatSort();
   ngOnInit(): void {
    this.getOrders();
@@ -104,21 +107,82 @@ userinfo()
 }
 updateuser()
 {
+this.progress = true;
 const info = {
   name: this.updateform.value.name,
   cp: this.updateform.value.cp,
   new_password: this.updateform.value.new_1,
-  new_password2: this.updateform.value.new_2
+  new_password2: this.updateform.value.new_2,
+  updateOption: this.updateform.value.updateOption
 
 }
-if (info.name === '' && info.cp === '') {
-  this.openSnackBar('Nothing to update');
+setTimeout(() => {
+  this.progress = false;
+},3000);
+if (info.updateOption === 'name') {
+if (info.name === '') {
+  this.openSnackBar('Empty Name');
   return;
 }
-  
+if (info.name.length < 3){
+  this.openSnackBar('Name too short');
+  return;
+}
+else {
+  this.userservice.updateuser({
+    "name": info.name
+}).subscribe(
+    (response: any) => {
+      console.log(response);
+      if (response.status === 'success') {
+        this.openSnackBar('Name updated');
+        this.userinfo();
+      }
+      else {
+        this.openSnackBar('Try Again');
+      }
+     
+    }
+  );
 
-  
-  
+}
+
+
+}
+else if (info.updateOption === 'password') {
+  if (info.cp === '' || info.cp.length < 8) {
+    this.openSnackBar('Minimum 8 characters');
+    return;
+  }
+  if (info.new_password === '' || info.new_password.length < 8 || info.new_password2 === '' || info.new_password2.length < 8) {
+    this.openSnackBar('Minimum 8 characters for new password');
+    return;
+  }
+  if (info.new_password !== info.new_password2) {
+    this.openSnackBar('New passwords do not match');
+    return;
+  }
+  else {
+    this.userservice.updateuser({
+      "password": info.cp,
+      "new_password": info.new_password,
+      "new_password2": info.new_password2
+  }).subscribe(
+      (response: any) => {
+        console.log(response);
+        if (response.status === 'success') {
+          this.openSnackBar('Password updated');
+         
+        }
+        else {
+          this.openSnackBar('Try Again');
+        }
+       
+      }
+    );
+  }
+}
+
 }
 openSnackBar(msg: string) {
   this._snackBar.open(msg, 'Close', {
@@ -130,7 +194,7 @@ openSnackBar(msg: string) {
 }
   updateaddress()
   { 
-    
+    this.progress = true;
     this.userservice.updateuser({
       "shippingAddress": this.address
   }).subscribe(
@@ -145,6 +209,9 @@ openSnackBar(msg: string) {
        
       }
     );
+    setTimeout(() => {
+      this.progress = false;
+    },3000);
   }
   view_order(order: any){
     console.log(order);
@@ -157,6 +224,7 @@ openSnackBar(msg: string) {
     this.getOrders();
   }
   remove_order(order: any){
+    this.progress = true;
 this.dialog.open(ConfirmDialogComponent, {
   data: order
 });
@@ -169,10 +237,13 @@ this.dialog.afterAllClosed.subscribe((res: any) => {
 
 );
 
-
+setTimeout(() => {
+  this.progress = false;
+},3000);
 
 
 }
+
 
 }
 

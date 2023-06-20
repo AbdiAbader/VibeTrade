@@ -14,6 +14,8 @@ import { WishserviceService } from 'src/app/services/wishlist/wishservice.servic
 import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { NotificationComponent } from 'src/app/components/notification/notification.component';
 import { NotifyserviceService } from 'src/app/services/notify/notifyservice.service';
+import { ReviewserviceService } from 'src/app/services/review/reviewservice.service';
+import { ProgressService } from 'src/app/services/progress/progress.service';
 
 @Component({
   selector: 'app-serached',
@@ -33,6 +35,7 @@ export class Searched implements OnInit{
     private wishservice: WishserviceService,
     private router: Router,
     private cartservice: CastserviceService,
+    private reviewserve: ReviewserviceService
    ) {}
 
   close(): void {
@@ -94,10 +97,10 @@ addtowishlist(product: any){
 
 
   review(product: any){
-    this.cartservice.singlecart(product);
-    this.router.navigate(['/review']);
-    this.dialogRef.close();
-
+   
+     this.reviewserve.setreview(product._id);
+     this.router.navigate(['/review']); 
+this.dialogRef.close();
   }
     
 
@@ -112,6 +115,7 @@ addtowishlist(product: any){
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
+
   cartitems = 0;
   search: string = '';
   productlist: Product[] = [];
@@ -121,7 +125,7 @@ export class HeaderComponent implements OnInit{
    count = 0;
   constructor(private productservice: ProductserviceService, private cartservice: CastserviceService, 
     private dialog: MatDialog, private snackbar: MatSnackBar,  private userservice: UserauthServiceService,
-   
+     private progressservice: ProgressService,
     private authservice: AuthserviceService, private router: Router,
     private dialogref: MatDialog,
    private notification: NotifyserviceService,
@@ -133,10 +137,11 @@ export class HeaderComponent implements OnInit{
      this.loggedin();
      this.isloggedin();
      console.log(this.authservice.getToken());
-
+   
   
   
   }
+  progress: boolean = this.progressservice.getProgress();
   ngOnInit(): void {
     this.getProducts();
     console.log(this.authservice.getToken());

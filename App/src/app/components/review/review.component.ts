@@ -7,6 +7,7 @@ import { CastserviceService } from 'src/app/services/cart/castservice.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormBuilder, FormControlName, Validators, FormGroup} from '@angular/forms';
+import { ProductserviceService } from 'src/app/services/productservice.service';
 
 
 @Component({
@@ -80,26 +81,36 @@ export class RpopComponent  implements OnInit{
 })
 export class ReviewComponent  implements OnInit {
  reivew:any= []
- pordutinfo: Product[] = [];
+ pordutinfo: any = [];
  showReplyForm = false;
  replyContent = '';
   constructor(private reviewservice: ReviewserviceService, private userservice: UserauthServiceService,
+    private producrservice: ProductserviceService,
     private cart: CastserviceService,
     private dialog: MatDialog,
     private snack: MatSnackBar,) { 
     this.getReview();
-    this.pordutinfo = this.cart.getsinglecart();
-    console.log(this.pordutinfo);
-
+    
   }
   ngOnInit(): void {
-    this.pordutinfo = this.cart.getsinglecart();
+         this.producrservice.getProducts().subscribe((response: any) => {
+           response.products.forEach((product: any) => {
+              if (product._id == this.reviewservice.getreview()) {
+                this.pordutinfo = product;
+              }
+            }
+            )
+          }
+          )
+        this.getReview();
+
     
   }
 getReview(){
- const id = this.cart.getsinglecart()[0]._id;
+ const id: any = this.reviewservice.getreview();
+
   this.reviewservice.getReviews(id).subscribe((response: any) => {
-    console.log(response);
+    
     this.reivew = response.data;
   }
   )
@@ -163,16 +174,11 @@ submitreply(item: any){
   this.reviewservice.addReply(item._id, this.replyContent).subscribe((response: any) => {
     console.log(response);
     this.dialog.closeAll();
-  }
-  )
-}
-submitreplyreply(reply: any){
-  this.reviewservice.addReplyofReply(reply._id, this.replyContent).subscribe((response: any) => {
-    console.log(response);
     this.getReview();
   }
   )
 }
+
 updatereplyLike(item: any, reply: any){
   this.reviewservice.replylike(item._id, reply._id).subscribe((response: any) => {
     console.log(response);

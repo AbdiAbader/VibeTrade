@@ -193,6 +193,7 @@ form{
       width: 20px;
       height: 20px;
       margin-right: 5px;
+      cursor: pointer;
     }
   }
   
@@ -256,11 +257,22 @@ form{
       tr:nth-child(even) {
         background-color: #fafafa;
       }
-      
-      .see img,
-      .symbol img {
+      img {
         cursor: pointer;
       }
+      
+      
     }
   }
+  
+
+  .radio-group {
+
+
+   font-weight: lighter;
+
+   
+ 
+  }
+  
   
