@@ -132,5 +132,24 @@ verify(email: string, pin: number)
   );
 }
 
+getcode(email: string): Observable<Response>
+{
+  return this.http.post<Response>(this.ApiUrl+'getcode', {email: email})
+  }
+  resetpass(email: string, pin: number, password: string){
+    this.http.post(this.ApiUrl+'resetpassword', {email: email, pin: pin, password: password}).subscribe(
+      (response: any) => {
+        if (response.status === 'success') {
+          this.snackbaropen('Password reset successfully');
+          this.router.navigate(['/register']);
+        }
+   
+      },
+      (error) =>{
+        this.snackbaropen('Password reset failed');
+      }
+
+    );
+  }
 
 }

@@ -36,7 +36,7 @@
           <p class="review-description">
             {{ item.content }}
           </p>
-          <span class="review-author">Author: {{ item.user.name }}</span>
+          <span class="review-author">Author: {{ item.user.name || 'Deleted User'}}</span>
   
         </div>
         <div class="review-actions">

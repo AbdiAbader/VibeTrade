@@ -50,6 +50,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { SeeOrderComponent } from './components/My_account/see-order/see-order.component';
 import { OrderConfirmComponent } from './components/Carts/order-confirm/order-confirm.component';
 import { VerificationComponent } from './components/verification/verification.component';
+import { ForgotComponent } from './components/forgot/forgot.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +74,8 @@ import { VerificationComponent } from './components/verification/verification.co
     SeeOrderComponent,
     ConfirmDialogComponent,
     OrderConfirmComponent,
-    VerificationComponent
+    VerificationComponent,
+    ForgotComponent
 
   
 

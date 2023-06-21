@@ -29,7 +29,7 @@ export class RpopComponent  implements OnInit{
     private reviewservice: ReviewserviceService, private frombuilder: FormBuilder,
     private cartservice: CastserviceService)
     {
-      this.buildform();
+    
     }
     ngOnInit(): void {  
       this.buildform();

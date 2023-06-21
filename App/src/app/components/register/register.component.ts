@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { HomeComponent } from '../home/home.component';
 import { NotifyserviceService } from 'src/app/services/notify/notifyservice.service';
+import { ForgotComponent } from '../forgot/forgot.component';
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -70,11 +71,13 @@ export class RegisterComponent implements  OnInit{
 
 
     }
-    this.userservice.signupUser(userdata);
+    this.userservice.signupUser(userdata)
+
    setTimeout(() => {
     this.progress = false;
     
    }, 3000);
+
 
   }
 
@@ -98,4 +101,8 @@ export class RegisterComponent implements  OnInit{
       console.error(error);
     }
   }
+  forgotpassword() {
+    this.dialog.open(ForgotComponent);
+}
+
 }
