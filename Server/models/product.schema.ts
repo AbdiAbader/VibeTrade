@@ -1,50 +1,13 @@
 
 import mongoose, { Document, Model, Schema } from 'mongoose';
 
-interface ProductAttributes {
-  color: string;
-  size?: number;
-  weight?: number;
-  height?: number;
-  width?: number;
-}
 
 
 
-export interface ProductDocument extends Document {
-  name: string;
-  description: string;
-  quantity: number;
-  price: number;
-  attributes: ProductAttributes;
-  image: string;
-  category: string;
-  brand: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-interface ProductModel extends Model<ProductDocument> {}
-const attributeschema = new mongoose.Schema<ProductAttributes>({
-    color: {
-        type: String,
-        default: ""
-    },
-    size: {
-        type: Number
-        
-    },
-    weight: {
-        type: Number
-    },
-    height: {
-        type: Number
-    },
-    width: {
-        type: Number
-    }
-});
+//
 
-const productDocumentSchema = new mongoose.Schema<ProductDocument>({
+
+const productDocumentSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Name is required"]
@@ -63,10 +26,7 @@ const productDocumentSchema = new mongoose.Schema<ProductDocument>({
         required: [true, "Price is required"],
         min: [0, "Price must be greater than or equal to 0"]
     },
-    attributes: {
-        type: attributeschema,
-        default: {}
-    },
+
     image: {
         type: String,
         default: ""
@@ -74,6 +34,10 @@ const productDocumentSchema = new mongoose.Schema<ProductDocument>({
     category: {
         type: String,
         default: ""
+    },
+    sale: {
+        type: Boolean,
+        default: false
     },
     brand: {
         type: String,

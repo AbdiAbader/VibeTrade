@@ -17,12 +17,12 @@ import Notificationrouter from './routes/notify.route';
 dotenv.config();
 
 
-const app = express();
+ const app = express();
 app.use(json());
 // enable CORS
 app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
     res.header('Access-Control-Allow-Origin', '*');
-    
+    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     next();
@@ -55,3 +55,6 @@ mongoose.connect(mongodb_url)
   });
 
 
+ 
+
+  export default app;

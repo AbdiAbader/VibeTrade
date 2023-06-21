@@ -1,4 +1,9 @@
+Server/node_modules
 /node_modules
 /src/node_modules
 src/.vscode
 src/.angular
+App/node_modules
+App/src/node_modules
+App/src/.vscode
+Server/node_modules

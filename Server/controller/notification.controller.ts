@@ -9,11 +9,13 @@ dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET || 'secret'
 
 export const createNotification = async (req: Request, res: Response): Promise<void> => {
+    console.log(req.body);
     try {
         const token = req.headers.authorization?.split(' ')[1];
         const decodedToken: any = jwt.verify(token!, JWT_SECRET);
         const userId = decodedToken.userId;
         const filter = { _id: userId };
+     
 
         await notificationSchema.create(
             { 
@@ -41,7 +43,7 @@ export const getNotification = async (req: Request, res: Response): Promise<void
         const decodedToken: any = jwt.verify(token!, JWT_SECRET);
         const userId = decodedToken.userId;
         const filter = { _id: userId };
-        const notification = await notificationSchema.find({ user: filter });
+        const notification = (await notificationSchema.find({ user: filter })).filter((not: any) => not.read === false);
         const msg = notification.length > 0 ? "Success" : "No notification found";
     
         res.status(200).json({
@@ -60,10 +62,13 @@ export const getNotification = async (req: Request, res: Response): Promise<void
 export const notificationRead = async (req: Request, res: Response): Promise<void> => {
      try{
         const token = req.headers.authorization?.split(' ')[1];
+        console.log(token);
         const decodedToken: any = jwt.verify(token!, JWT_SECRET);
         const userId = decodedToken.userId;
         const filter = { _id: userId };
-       await notificationSchema.updateOne({user: filter}, {$push: {read: true}});
+        const id = req.body._id;
+
+      await notificationSchema.updateOne({ user: filter, _id: id }, { read: true });
          res.status(200).json({
           status: "Success",
             message: "Notification read"

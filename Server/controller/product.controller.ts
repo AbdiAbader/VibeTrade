@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import productSchema from "../models/product.schema";
-import orderitemSchema from "../models/orderitems.schema";
+
 import mongoose from "mongoose";
 
 export const createProduct = async (
@@ -83,8 +83,7 @@ export const getProductById = async (req: Request, res: Response): Promise<void>
        
         const productfilter = { _id: req.params.id };
         const deletedProduct = await productSchema.findOneAndDelete(productfilter).session(session);
-      
-         await orderitemSchema.deleteMany({product: req.params.id}).session(session);
+
          await session.commitTransaction();
 
         res.status(200).json({

@@ -16,7 +16,14 @@ const userDocumentSchema = new mongoose.Schema({
     required: [true, "Password is required"],
     minlength: [6, "Password must be at least 6 characters long"]
     },
-    
+  pin: {
+    type: Number,
+    default: 0
+    },
+  verified: {
+    type: Boolean,
+    default: false
+    },
     shippingAddress: {
         type: String,
         default: ""
