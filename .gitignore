@@ -7,3 +7,4 @@ App/node_modules
 App/src/node_modules
 App/src/.vscode
 Server/node_modules
+App/.vscode
