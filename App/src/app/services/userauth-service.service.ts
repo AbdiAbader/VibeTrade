@@ -33,8 +33,11 @@ export class UserauthServiceService {
   this.http.post(this.ApiUrl, user).subscribe(
     (response: any) => {
       if (response.status === 'Success') {
-        this.snackbaropen('Signup successful \n Please Login');
-        this.router.navigate(['/register']);
+        this.snackbaropen('Signup successfully please verify your email');
+        this.router.navigate(['/verify'],{
+          queryParams: {
+            email: user.email}
+        });
         this.progress.setProgress(false);
       }
     },
@@ -46,20 +49,21 @@ export class UserauthServiceService {
 
 }
  longinUser(user: login): void{
+
 this.http.post(this.ApiUrl+'login', user).subscribe(
   (response: any) => {
-   
+    console.log(response);
       if (response.message) {
-        
+     
         this.handleSuccessfulLogin(response);
       } else {
-        this.snackbaropen('Login failed');
-        this.handleLoginError();
+      
+        this.handleLoginError('Failed');
       }
     },
     (error: any) => {
-      this.snackbaropen('Login failed');
-      this.handleLoginError();
+      
+      this.handleLoginError(error.statusText);
     }
   );
 }
@@ -78,10 +82,20 @@ private handleSuccessfulLogin(response: any): void {
 
 }
 
-private handleLoginError(): void {
- this.snackbaropen('Login failed');
+private handleLoginError(str: string): void {
+  if (str === 'Forbidden') {
+    this.snackbaropen('Verify your account first');
+    this.router.navigate(['/verify']);
+  }
+  else if (str === 'Not Found') {
+    this.snackbaropen('Email not found');
+  }
+  else{
+ this.snackbaropen('Invalid password');
+  }
   this.isAuthenticated = false;
-}
+  }
+
 
 
 getIsAuthenticated() {
@@ -96,10 +110,26 @@ updateuser(userinfo: {}): Observable<User> {
 
 snackbaropen(message: string) {
   this.snackbar.open(message, 'close', {
-    duration: 3000,
+    duration: 3500,
     verticalPosition: 'top',
     horizontalPosition: 'center'
   });
+}
+
+verify(email: string, pin: number)
+{
+  this.http.post(this.ApiUrl+'verifypin', {email: email, pin: pin},{headers: {Authorization: `Bearer ${this.authService.getToken()}`}}).subscribe(
+    (response: any) => {
+      if (response.status === 'success') {
+        this.snackbaropen('Verification successfull Please Login');
+        this.router.navigate(['/register']);
+
+      }
+      else{
+        this.snackbaropen('Verification failed');
+      }
+    }
+  );
 }
 
 

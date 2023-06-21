@@ -49,6 +49,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { NotificationComponent } from './components/notification/notification.component';
 import { SeeOrderComponent } from './components/My_account/see-order/see-order.component';
 import { OrderConfirmComponent } from './components/Carts/order-confirm/order-confirm.component';
+import { VerificationComponent } from './components/verification/verification.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,8 @@ import { OrderConfirmComponent } from './components/Carts/order-confirm/order-co
     NotificationComponent,
     SeeOrderComponent,
     ConfirmDialogComponent,
-    OrderConfirmComponent
+    OrderConfirmComponent,
+    VerificationComponent
 
   
 

@@ -6,6 +6,11 @@
     border-radius: 8px;
     margin-top: 2%;
     margin-bottom: 3%;
+    img {
+     
+      margin-right: 20px;
+
+    }
   }
   h2 {
     text-align: center;
@@ -52,6 +57,7 @@ label {
     &:hover{
       background-color: #0056b3;
     }
+    
   }
   
   

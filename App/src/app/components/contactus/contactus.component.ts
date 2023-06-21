@@ -12,6 +12,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./contactus.component.scss']
 })
 export class ContactusComponent implements OnInit{
+ emailRegex: any = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
   contactusForm: FormGroup = new FormGroup({
     name: new FormControl(''),
@@ -31,17 +32,39 @@ ngOnInit(): void {
 buildForm() {
   this.contactusForm = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, this.emailValidator ]],
     message: ['', [Validators.required]]
    
   });
 }
-async contactus(){
-  if (this.contactusForm.invalid) {
-    this.snackbar('Please fill all the fields');
-    return;
+emailValidator = (control: FormControl) => {
+  const value = control.value;
+  if (!value || !this.emailRegex.test(value)) {
+    return {
+      email: {
+        required: true,
+        pattern: this.emailRegex,
+      },
+      
+    };
   }
 
+  return null;
+};
+
+async contactus(){
+  if (this.contactusForm.invalid) {
+    if (this.contactusForm.controls['name'].invalid || this.contactusForm.controls['message'].invalid) {
+
+    this.snackbar('Please fill all the fields Correctly');
+    return;
+  }
+  else{
+    this.snackbar('Please Enter a valid Email');
+    return;
+  }
+    return;
+}
   
 const data = {
    name : this.contactusForm.value.name,

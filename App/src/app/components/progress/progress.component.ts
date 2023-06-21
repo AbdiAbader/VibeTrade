@@ -6,8 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./progress.component.scss']
 })
 export class ProgressComponent implements OnInit {
+  progress = false;
+  constructor () {}
   ngOnInit(): void {
-    setTimeout(() => { 
-    }, 20)
+   
+  }
+
+
+
+  handleProgressBar(show: boolean) {
+    this.progress = show;
   }
 }
