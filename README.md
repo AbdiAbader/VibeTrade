@@ -2,7 +2,7 @@
 
 This is an Ecommerce application built using the MEAN stack (MongoDB, Express, Angular, and Node.js). The application allows users to browse and purchase products, manage their shopping cart, leave product reviews, create wishlists, update their profile information, and perform various other actions related to an Ecommerce platform.
 
-For the admin dashboard functionality, please refer to the [Admin Dashboard README](./VibeAdmin/README.md) for detailed information.
+For the admin dashboard functionality, please refer to the [Admin Dashboard README](./VibeAdmin for detailed information.
 
 ## Functionalities
 
