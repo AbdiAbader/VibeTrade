@@ -1,0 +1,73 @@
+
+<button (click)="toggleSidebar()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="home">
+  
+  
+  
+   
+      <div class="dashboard">
+          <div class="sidebar" [ngClass]="{ 'hide': !isSidebarVisible }">
+          <hr>
+          <a routerLink="/Users" class="nav-link ">Users</a>
+          <a routerLink="/Home">Products</a>
+          
+          <a routerLink="/Order " class="nav-link act">Orders</a>
+          <a routerLink="/request" class="nav-link ">Users Request</a>
+          <hr>
+          </div>
+      <div class="main">
+  
+  
+          <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> User ID </th>
+      <td mat-cell *matCellDef="let productlist"><input disabled type="text"  [(ngModel)]="productlist.user"> </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Order Status </th>
+      <td mat-cell *matCellDef="let productlist"><input disabled [(ngModel)]="productlist.order_status"> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="order">
+        <th mat-header-cell *matHeaderCellDef> Payment Method </th>
+        <td mat-cell *matCellDef="let productlist"><input disabled [(ngModel)]="productlist.payment_method"></td>
+      </ng-container>
+  
+  
+ 
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let productlist"><button (click)="open(productlist)" class="delete" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>delete</mat-icon></button></td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10]"
+                  showFirstLastButtons
+                  aria-label="Select page of periodic elements">
+  </mat-paginator>
+  
+          </div>
+  
+  
+      </div>
+  
+      </div>

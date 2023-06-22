@@ -1,0 +1,156 @@
+.home
+{
+ height: 780px;
+ width: 100%;
+
+    h1{
+        font-weight: lighter;
+    }
+    button {
+        padding: 10px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+      
+      }
+    
+      button:hover {
+        background-color: #248324;
+        transform: scale(1.1);
+      }
+    
+      button:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+}
+
+.dashboard {
+    height: 100%;
+    display: flex;
+    border: 1px solid #969696;
+
+
+}
+.sidebar {
+    width: 200px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.hide {
+    transform: translateX(-220px);
+  }
+
+  .sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  .sidebar a:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .sidebar hr {
+    margin-bottom: 10px;
+    border: none;
+    border-top: 1px solid #ddd;
+  }
+.main{
+    width: 80%;
+    height: 100%;
+
+
+    h1{
+        font-weight: lighter;
+    }
+    .mat-elevation-z8   input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        width: 100%;
+        transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+    
+      input:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+    
+      /* Styles for the button */
+      .update  {
+        padding: 10px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+      }
+    
+      button:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
+      }
+    
+      button:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+      .delete {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        background-color: #ff3333;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      
+        &:hover {
+          background-color: #ff4d4d;
+        }
+      
+        .delete-icon {
+          width: 16px;
+          height: 16px;
+          fill: #fff;
+        }
+      }
+    
+      }
+
+    .add {
+      position: absolute;
+      right: 0px;
+      background-color: #34790d;
+}
+.add:hover {
+  background-color: #34790d;
+  transform: scale(1.1);
+}
+
+.add:focus {
+  outline: none;
+  box-shadow: 0 0 5px #34790d;
+}
+
+ 
+.nav-link.act {
+  background-color: #007bff;
+  color: #fff;
+}
