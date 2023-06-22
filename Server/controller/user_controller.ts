@@ -39,6 +39,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
        pin: gpin,
    });
     await userSchema.create(newUser);
+    console.log(gpin);
 
 (async () => {
   const data: SendEmailV3_1.Body = {
@@ -54,7 +55,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
         ],
        
         Subject: 'Your registered successfully to VibeTrade! ' + name,
-        HTMLPart: '<h1 color="brown">Wellcome '+name+'<br><img src="https://ouch-cdn2.icons8.com/zrduQtm5T0cg4966xLgS9AVgXgdbaXxO-N1XqFwkILk/rs:fit:256:302/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDA4/LzdlZGUxMjViLTU1/NzUtNDdjMi04Mzhj/LWYyNGJhZmNmYmJh/Ny5wbmc.png"><br><h1 >Your pin is:'+gpin+'</h1>',
+        HTMLPart: '<h1 color="brown">Wellcome '+name+'</h1><br><img src="https://ouch-cdn2.icons8.com/zrduQtm5T0cg4966xLgS9AVgXgdbaXxO-N1XqFwkILk/rs:fit:256:302/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDA4/LzdlZGUxMjViLTU1/NzUtNDdjMi04Mzhj/LWYyNGJhZmNmYmJh/Ny5wbmc.png"><br><h1 >Your pin is:'+gpin+'</h1>',
         TextPart: 'VibeTrade!',
       },
     ],
