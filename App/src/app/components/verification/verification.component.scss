@@ -4,19 +4,24 @@
   align-items: center;
 
   padding: 20px;
-  height: 250px;
+  height: 370px;
   background-color: #f0f0f0;
   border-radius: 8px;
-}
+  border-bottom: 1px solid rgb(164, 160, 160);
+  img {
+    width: 120px;
+    height: 120px;
+  }
+  }
 
 input {
-    margin-top: 5%;
+    margin-top: 1%;
   width: 200px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 button {
