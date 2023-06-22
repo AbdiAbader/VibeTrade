@@ -1,0 +1,45 @@
+<button (click)="toggleSidebar()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="home">
+  
+  
+  
+   
+      <div class="dashboard">
+          <div class="sidebar" [ngClass]="{ 'hide': !isSidebarVisible }">
+          <hr>
+          <a routerLink="/Users" class="nav-link">Users</a>
+          <a routerLink="/Home" class="nav-link ">Products</a>
+          <a routerLink="/Order" class="nav-link">Orders</a>
+          <a routerLink="/request" class="nav-link act">Users Request</a>
+          <hr>
+          </div>
+
+          <div class="main">
+          <div class="user-request-container">
+
+          <div  class="user-request" *ngFor="let request of paginatedUserRequests">
+            
+          
+            <h3>{{ request.name }}</h3>
+            <p>Email: {{ request.email }}</p>
+            <p>Message: {{ request.message }}</p>
+            <hr>
+            <input type="checkbox" [id]="'checkbox-' + request._id" [checked]="request.checked" (change)="onCheckboxChange($event, request)">
+            <label [for]="'checkbox-' + request._id">Mark as read</label>
+         
+          </div>
+      
+          
+
+
+          </div>
+          <div class="pagination">
+            <ul>
+              <li *ngFor="let page of pages" [class.active]="currentPage === page">
+                <a (click)="changePage(page)">{{ page }}</a>
+              </li>
+            </ul>
+          </div>
+          </div>
