@@ -57,7 +57,7 @@ if (!userExists) {
 }
 
       await orderSchema.create([new_order], {session: session}).then((res) => {
-        console.log(res);
+       s
        
       }).catch((err) => {
         console.log(err);
