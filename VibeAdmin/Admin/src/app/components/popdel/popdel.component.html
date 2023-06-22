@@ -1,0 +1,18 @@
+<div class="product" *ngIf="probool"><h1 mat-dialog-title>Delete Product</h1>
+<div mat-dialog-content>
+  Would you like to delete this Product?.
+</div>
+<div mat-dialog-actions>
+  <button  (click)="deleteProduct()" mat-button mat-dialog-close cdkFocusInitial>Yes</button>
+  <button mat-button mat-dialog-close>No</button>
+</div>
+</div>
+<div class="order" *ngIf="orderbool">
+<h1 mat-dialog-title>Delete order</h1>
+<div mat-dialog-content>
+  Would you like to delete this order?.
+</div>
+<div mat-dialog-actions>
+  <button  (click)="deleteOrder()" mat-button mat-dialog-close cdkFocusInitial>Yes</button>
+  <button mat-button mat-dialog-close>No</button>
+</div></div>
