@@ -45,7 +45,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
     Messages: [
       {
         From: {
-          Email: 'ethioafri2@gmail.com',
+          Email: 'vibetradeteam@gmail.com',
         },
         To: [
           {
@@ -53,8 +53,8 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
           },
         ],
        
-        Subject: 'Your registered successfully to VibeTrade!' + name,
-        HTMLPart: '<h1>Your pin is: </h1>' + gpin,
+        Subject: 'Your registered successfully to VibeTrade! ' + name,
+        HTMLPart: '<h1 color="brown">Wellcome '+name+'<br><img src="https://ouch-cdn2.icons8.com/zrduQtm5T0cg4966xLgS9AVgXgdbaXxO-N1XqFwkILk/rs:fit:256:302/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDA4/LzdlZGUxMjViLTU1/NzUtNDdjMi04Mzhj/LWYyNGJhZmNmYmJh/Ny5wbmc.png"><br><h1 >Your pin is:'+gpin+'</h1>',
         TextPart: 'VibeTrade!',
       },
     ],
@@ -259,7 +259,7 @@ export const getcode = async (req: Request, res: Response) => {
     Messages: [
       {
         From: {
-          Email: 'ethioafri2@gmail.com',
+          Email: 'vibetradeteam@gmail.com',
         },
         To: [
           {
@@ -267,8 +267,8 @@ export const getcode = async (req: Request, res: Response) => {
           },
         ],
        
-        Subject: '   VibeTrade-PassWord ',
-        HTMLPart: '<h1 color="red">Your pin is: </h1>' + pin+'<h1>Dont Share it with anyone</h1>'+'<h1> If you did not request this, please ignore this email.</h1>',
+        Subject: ' VibeTrade-PassWord-Reset ',
+        HTMLPart: '<img src="https://photos.app.goo.gl/sxMHbtuNQyuNxaTP7"><br><h1 color="red">Your pin is: </h1>' + pin+'<h1>Dont Share it with anyone</h1>'+'<h1> If you did not request this, please ignore this email.</h1>',
         TextPart: 'VibeTrade!',
       },
     ],
@@ -360,7 +360,7 @@ export const getcode = async (req: Request, res: Response) => {
     Messages: [
       {
         From: {
-          Email: 'ethioafri2@gmail.com',
+          Email: 'vibetradeteam@gmail.com',
         },
         To: [
           {
@@ -368,8 +368,8 @@ export const getcode = async (req: Request, res: Response) => {
           },
         ],
        
-        Subject: '   VibePay ',
-        HTMLPart: '<img src="https://cdn-icons-png.flaticon.com/128/677/677069.png"><br><h1 style="font-size: 2rem; font-weight: bold; color: #333;">You have paid: ' +total+'</h1> <br><h1 style="font-size: 1.5rem; color: #333;">Thank you for using VibePay</h1>',
+        Subject: ' VibePay ',
+        HTMLPart: '<img src="https://ouch-cdn2.icons8.com/0MlhqWTstPMItVyKGZCuF3A_ipPOiJkN1DBs4FKerlg/rs:fit:256:256/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMjMx/Lzk1OWM2NmUyLTI3/YjktNGY2ZC1iZWRm/LWY5OWE4YzcwZGFk/MC5zdmc.png"><br><h1 style="font-size: 2rem; font-weight: lighter; color: #333;">You have paid: ' +total+'</h1> <br><h1 style="font-size: 1.5rem; color: #333;">Thank you for using VibePay</h1>',
         TextPart: 'VibeTrade!',
       },
     ],

@@ -157,7 +157,7 @@ this.progress = false;
 
 snackbar(msg: string ){
   this._snackBar.open(msg, 'close', {
-    duration: 5000,
+    duration: 2000,
     horizontalPosition: 'center',
     verticalPosition: 'top',
   });
