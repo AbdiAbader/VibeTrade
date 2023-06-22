@@ -14,10 +14,8 @@ export class VerificationComponent implements OnInit {
     private userservice: UserauthServiceService) { }
     email: string = '';
   pin = 0;
-  
 
   verify(){
-    
 
    if (this.pin < 99)
    {
