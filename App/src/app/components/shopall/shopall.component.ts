@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import {MatPaginatorModule} from '@angular/material/paginator';
 import { Searched } from 'src/app/layouts/header/header.component';
 import { ProductserviceService } from 'src/app/services/productservice.service';
 import { Product, Productapiresponse } from 'src/Interfaces/product';
