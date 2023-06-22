@@ -78,7 +78,6 @@ export class RegisterComponent implements  OnInit{
     
    }, 3000);
 
-
   }
 
   async onsingin() {
