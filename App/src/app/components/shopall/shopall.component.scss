@@ -43,12 +43,17 @@
 
     text-decoration: none;
     color: black;
+    cursor: pointer;
     font-size: 1.2em;
     font-weight: lighter;
     margin-bottom: 0.8em;
     &:hover {
         color: rgb(156, 84, 84);
         
+    }
+    &:active{
+        color: #d47304;
+        font-weight: bold;
     }
 
 }
@@ -66,5 +71,12 @@
         width: 350px;
        
 
+    }
+}
+label {
+    padding: 20px;
+    cursor: pointer;
+    &:hover{
+        color: rgb(10, 110, 233);
     }
 }

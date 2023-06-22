@@ -151,5 +151,10 @@ getcode(email: string): Observable<Response>
 
     );
   }
-
+paydemo(total: number): Observable<Response>
+{
+  console.log(total);
+  
+return this.http.post<Response>('http://0.0.0.0:3000/user/paydemo', {"total": total},{headers: {Authorization: `Bearer ${this.authService.getToken()}`}});
+}
 }

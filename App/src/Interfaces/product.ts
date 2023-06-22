@@ -7,6 +7,7 @@ export interface Product {
     image: string,
     brand: string,
     category: string,
+    sale: boolean,
 
 }
 export interface Productapiresponse {

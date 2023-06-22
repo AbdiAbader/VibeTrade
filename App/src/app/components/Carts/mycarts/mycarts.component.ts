@@ -13,7 +13,8 @@ import {
 } from '@angular/material/snack-bar';
 import { UserauthServiceService } from 'src/app/services/userauth-service.service';
 import { NotifyserviceService } from 'src/app/services/notify/notifyservice.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { TransactionComponent } from '../../transaction/transaction.component';
 
 
 
@@ -44,7 +45,9 @@ export class MycartsComponent implements OnInit  {
     private orderservice: OrderserviceService, private _snackBar: MatSnackBar,
     private userauthservice: UserauthServiceService,
     private router: Router,
-    private notify: NotifyserviceService ){
+    private notify: NotifyserviceService,
+    private dialog: MatDialog) { 
+    
       
   }
 
@@ -54,7 +57,7 @@ export class MycartsComponent implements OnInit  {
 
     this.cart = this.cartservice.getcart()
     this.total();
-    this.invokeStripe();
+    
    this.userauthservice.getuserbyid().subscribe((res: any) => {
 
     this.shipping = res.data.shippingAddress;
@@ -94,13 +97,19 @@ export class MycartsComponent implements OnInit  {
  if (this.cartservice.getcart().length > 0) {
   this.progress = true;
     if (this.payment !== 'cash on delivery') {
-      this.paymentHandler.open({
-        name: 'VibeTrade-Shopping',
-        description: 'Payment',
-        amount: this.total() * 100
-      });
+  
+     this.dialog.open(TransactionComponent,
+     {data: {total: this.total(),
+      payment: this.payment,
+    cart: this.cartservice.getcart(),}
     }
-    if (this.paymentHandler.closed) {
+      );
+   
+return;
+
+    }
+  else{
+  
 
     for (let item of this.cartservice.getcart()) {
       this.orderitem.push({
@@ -133,11 +142,11 @@ export class MycartsComponent implements OnInit  {
     this.progress = false;
   }
   )
-    }
+    
 
   
 }
-
+ }
 else {
   this.snackbar("Cart is empty");
 
@@ -157,30 +166,5 @@ total(): number{
  return Number(this.cartservice.Total());
 }
 
-
-
-
-invokeStripe() {
-  if (!window.document.getElementById('stripe-script')) {
-    const script = window.document.createElement('script');
-
-    script.id = 'stripe-script';
-    script.type = 'text/javascript';
-    script.src = 'https://checkout.stripe.com/checkout.js';
-    script.onload = () => {
-      this.paymentHandler = (<any>window).StripeCheckout.configure({
-        key: this.stripeAPIKey,
-        locale: 'auto',
-        token: function (stripeToken: any) {
-          console.log(stripeToken);
-          alert(this.snackbar());
-        },
-      });
-    };
-
-    window.document.body.appendChild(script);
-
-  }
-}
 
 }

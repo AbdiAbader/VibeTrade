@@ -15,9 +15,9 @@ orderapi: string = 'http://0.0.0.0:3000/order/'
 getorderitems(): Observable<Orderapiresponse> {
   return this.http.get<Orderapiresponse>(this.orderapi, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
 }
-addorderitem(order: any): Observable<string>{
+addorderitem(order: any): Observable<Response>{
    
- return this.http.post<string>(this.orderapi, order, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+ return this.http.post<Response>(this.orderapi, order, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
   
   
 }
