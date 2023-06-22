@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReviewserviceService } from 'src/app/services/review/reviewservice.service';
 import { UserauthServiceService } from 'src/app/services/userauth-service.service';
-import { Cart } from 'src/Interfaces/cart';
-import { Product } from 'src/Interfaces/product';
+
 import { CastserviceService } from 'src/app/services/cart/castservice.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
