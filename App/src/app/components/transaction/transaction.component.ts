@@ -44,7 +44,7 @@ pay(){
   this.orderservice.addorderitem(this.orders)
 });
     this.snack('Order Placed Successfully');
-    this.notify.createNotification({"title": "Order Placed Successfully", "message": "Your order has been placed successfully"})
+    this.notify.createNotification({"title": "Order Placed Successfully", "message": "Your order has been placed successfully see your order in order history"})
       this.cartservice.freecart();
       this.router.navigate(['/orderconfirm']);    
   
