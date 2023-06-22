@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthserviceService } from 'src/app/services/Auth/authservice.service';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 
@@ -13,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class AlertComponent {
    constructor(private snackbar: MatSnackBar, 
     private authservice: AuthserviceService,
-    private router: Router,
+   
     private dialog: MatDialog){}
    closeDialog(res : boolean){
      if (res) {

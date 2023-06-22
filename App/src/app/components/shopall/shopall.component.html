@@ -9,12 +9,12 @@
 
     <div class="category">
    
-        <a (click)="getpro()">All</a>
+        <a  (click)="all()">All</a>
         <a (click)="electronics()">Electronics</a>
         <a (click)="furnitures()">Furniture</a>
-        <a >Clothes</a>
+        <a (click)="Clothe()">Clothes</a>
         <a (click)="shoe()">Shoes</a>
-        <a >Sales</a>
+        <a (click)="sale()">Sales</a>
 
     </div>
     <hr>
@@ -25,7 +25,7 @@
            
           
                 
-                  <div class="products" *ngFor="let product of productlist" >
+                  <div class="products" *ngFor="let product of productlist | slice:first:second" >
                     
                        
                             <img src="{{product.image}}" alt="{{product.name}}" (click)="view(product)">
@@ -34,12 +34,9 @@
                       
                   
                 </div>
+                <label (click)="next()">Next</label>
+                <label (click)="prev()">Prev</label>
             
     </div>
    
 </div>
-<mat-paginator [length]="1"
-[pageSize]="1"
-[pageSizeOptions]="[1, 23, 25, 100]"
-aria-label="Select page">
-</mat-paginator>

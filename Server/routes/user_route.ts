@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, login, getbyID, updateUserById, checkToken, verifyPin, getcode, resetPassword} from '../controller/user_controller';
+import { createUser, login, getbyID, updateUserById, checkToken, verifyPin, getcode, resetPassword, paydemo} from '../controller/user_controller';
 import { authorize } from '../middleware/Auth'
 
 const UserRouter = (app: express.Application) => {
@@ -11,6 +11,6 @@ const UserRouter = (app: express.Application) => {
     app.post('/user/verifypin', verifyPin);
     app.post('/user/getcode', getcode);
     app.post('/user/resetpassword', resetPassword);
-
+    app.post('/user/paydemo', paydemo);
     }
 export default UserRouter;

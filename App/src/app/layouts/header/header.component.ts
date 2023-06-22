@@ -141,7 +141,7 @@ export class HeaderComponent implements OnInit{
   
   
   }
-  progress: boolean = this.progressservice.getProgress();
+ 
   ngOnInit(): void {
     this.getProducts();
     console.log(this.authservice.getToken());

@@ -51,6 +51,7 @@ import { SeeOrderComponent } from './components/My_account/see-order/see-order.c
 import { OrderConfirmComponent } from './components/Carts/order-confirm/order-confirm.component';
 import { VerificationComponent } from './components/verification/verification.component';
 import { ForgotComponent } from './components/forgot/forgot.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +76,8 @@ import { ForgotComponent } from './components/forgot/forgot.component';
     ConfirmDialogComponent,
     OrderConfirmComponent,
     VerificationComponent,
-    ForgotComponent
+    ForgotComponent,
+    TransactionComponent
 
   
 

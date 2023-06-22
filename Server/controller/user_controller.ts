@@ -148,7 +148,7 @@ export const updateUserById = async (req: Request, res: Response): Promise<void>
    const client: ClientSession = await userSchema.startSession();
    await client.startTransaction();
   try {
-   const token = req.headers.authorization?.split(' ')[1];
+    const token = req.headers.authorization?.split(' ')[1];
     const decodedToken: any = jwt.verify(token!, JWT_SECRET);
     const userId = decodedToken.userId;
     const filter = { _id: userId };
@@ -337,4 +337,60 @@ export const getcode = async (req: Request, res: Response) => {
     finally {
       await client.endSession();
     }
+  }
+
+  export const paydemo = async (req: Request, res: Response): Promise<void> => {
+
+     try{
+      console.log(req.body.total);
+
+      const token = req.headers.authorization?.split(' ')[1];
+      console.log(token);
+      const decodedToken: any = jwt.verify(token!, JWT_SECRET);
+      const userId = decodedToken.userId;
+      const filter = { _id: userId };
+      const user: any = await userSchema.findOne(filter);
+      const email = user.email;
+      const total = req.body.total;
+
+
+
+(async () => {
+  const data: SendEmailV3_1.Body = {
+    Messages: [
+      {
+        From: {
+          Email: 'ethioafri2@gmail.com',
+        },
+        To: [
+          {
+            Email: email,
+          },
+        ],
+       
+        Subject: '   VibePay ',
+        HTMLPart: '<img src="https://cdn-icons-png.flaticon.com/128/677/677069.png"><br><h1 style="font-size: 2rem; font-weight: bold; color: #333;">You have paid: ' +total+'</h1> <br><h1 style="font-size: 1.5rem; color: #333;">Thank you for using VibePay</h1>',
+        TextPart: 'VibeTrade!',
+      },
+    ],
+  };
+
+  const result: LibraryResponse<SendEmailV3_1.Response> = await mailjet
+          .post('send', { version: 'v3.1' })
+          .request(data);
+
+  const { Status } = result.body.Messages[0];
+})();
+
+    res.status(200).json({
+      status: "success",
+    })
+
+     }
+     catch(err){
+      res.status(400).json({
+        status: "Failed",
+        massage: err
+      });
+     }
   }
