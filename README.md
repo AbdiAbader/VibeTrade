@@ -81,6 +81,8 @@ The MEAN Ecommerce app is licensed under the MIT License.
 
 ## Authors
 [Abdi Abader](https://github.com/AbdiAbader)
+
 [Adonyas Getachew](https://github.com/AdonyasG)
+
 [Serafina Hailu](https://github.com/Sara3394)
 
