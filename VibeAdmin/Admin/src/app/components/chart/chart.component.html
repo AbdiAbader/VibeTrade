@@ -1,0 +1,52 @@
+<button (click)="toggleSidebar()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="home">
+     <div class="dashboard">
+          <div class="sidebar" [ngClass]="{ 'hide': !isSidebarVisible }">
+          <hr>
+          <a routerLink="/Users" class="nav-link">Users</a>
+          <a routerLink="/Home" class="nav-link act">Products</a>
+          <a routerLink="/Order" class="nav-link">Orders</a>
+          <a routerLink="/request" class="nav-link">Users Request</a>
+          <hr>
+          </div>
+       
+
+<div class="style">
+    <a routerLink="/Users"><ngx-charts-number-card
+    *ngFor="let data of chartData"
+    [results]="chartData"
+    [cardColor]="cardColor"
+  
+    >
+    </ngx-charts-number-card></a>
+    <a routerLink="/Home"><ngx-charts-number-card
+    *ngFor="let data of chartData"
+    [results]="chartData2"
+    [cardColor]="cardColor"
+  
+    >
+    </ngx-charts-number-card></a>
+    <a routerLink="/Order"><ngx-charts-number-card
+
+  *ngFor="let data of chartData"
+  [results]="chartData3"
+  [cardColor]="cardColor"
+
+  >
+  </ngx-charts-number-card></a>
+
+
+<a routerLink="/request"><ngx-charts-number-card
+
+*ngFor="let data of chartData"
+[results]="chartData4"
+[cardColor]="cardColor"
+
+>
+</ngx-charts-number-card></a>
+  </div>
+  </div>
+
+ </div>
